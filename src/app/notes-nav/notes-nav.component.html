@@ -1,0 +1,17 @@
+<!--
+css "flex" definition: (-> entspricht fxFlex)
+This is the shorthand for flex-grow, flex-shrink and flex-basis combined.
+The second and third parameters (flex-shrink and flex-basis) are optional. 
+Default is 0 1 auto.
+
+
+-->
+
+
+<ul class ="notes-nav" fxLayout.xs="column">
+
+  <li *ngFor="let topic of topicsArray">
+      <a routerLink="/notes-manager/{{topic.id}}" routerLinkActive="active">{{topic.name}}</a>
+  </li>
+
+</ul>

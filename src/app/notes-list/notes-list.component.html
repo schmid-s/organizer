@@ -1,0 +1,15 @@
+<!--  Warum wird *ngIf="topic" gebraucht, wo doch per onInit das topic definiert wird?
+      Wird auch im Heroes-Tutorial so gehandhabt...
+-->
+<div *ngIf="topic">
+<h2>{{topic.name}}</h2>
+<!----<div *ngIf="topic">-->
+    <ul>  
+      <li *ngFor="let note of notesList"
+        [class.selected]="note === selectedNote"
+        (click)="onSelect(note)">      
+        <!--<a [routerLink]="[ '', { outlets: { note-view: 'topic.id','notes' , note.id } }]" routerLinkActive="active">{{note.title}}</a>-->
+        <a [routerLink]="[ '/notes-manager', { outlets: { primary: [topic.id] ,'note-view': 'notes/' + [note.id] } }]" routerLinkActive="active">{{note.title}}</a>
+      </li>    
+    </ul>
+</div>

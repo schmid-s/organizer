@@ -1,0 +1,16 @@
+:host{
+    background-color: rgb(243, 235, 235);
+    padding: 3rem;
+    z-index: -1;
+}
+
+.note-title{
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+}
+
+/*
+.note-text{
+
+}
+*/

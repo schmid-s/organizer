@@ -1,0 +1,38 @@
+:host{
+    flex: 1 1 100px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    align-items: stretch;
+    
+}
+
+.note-column-wrapper{
+    flex: 1 1 auto;
+    -webkit-box-shadow: inset 0px 100vh 34px calc(-100vh - 7px) rgba(0, 0, 0, 0.30);
+    -moz-box-shadow: inset 0px 100vh 34px calc(-100vh - 7px) rgba(0,0,0,0.30);
+    box-shadow: inset 0px 100vh 34px calc(-100vh - 7px) rgba(0, 0, 0, 0.30);
+}
+/*
+app-notes-list{
+    background-color: rgb(239, 238, 245);
+}
+
+app-note-viewer{
+    background-color: rgb(255, 255, 255);
+}
+
+app-note-viewer{
+    padding: 2rem;
+}
+
+app-notes-nav{
+    font-size: 2rem;
+    background-color: rgb(193, 255, 241);
+    
+}
+
+.test{
+    background-color: brown;
+}
+*/
