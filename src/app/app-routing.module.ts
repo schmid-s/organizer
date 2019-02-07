@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {ExtraOptions} from "@angular/router";
 
 import { NoteManagerComponent } from './note-manager/note-manager.component';
-import { NotesListComponent } from './notes-list/notes-list.component';
+import { NotesLevelComponent } from './notes-level/notes-level.component';
 import { NoteViewerComponent } from './note-viewer/note-viewer.component';
 
 
@@ -15,10 +15,12 @@ const routes: Routes = [
     component: NoteManagerComponent,
     children: [
       
-      { path: ':topicId', component: NotesListComponent},
-      { path: 'notes/:noteId', component: NoteViewerComponent, outlet:"note-view", pathMatch: 'full'}
-      
-       
+      { path: ':topicId', 
+        component: NotesLevelComponent,
+        children: [
+          { path: 'notes/:noteId', component: NoteViewerComponent}
+        ]
+      }
     ]
   },
 

@@ -14,6 +14,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService }  from './in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
+import { NotesLevelComponent } from './notes-level/notes-level.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RouterModule } from '@angular/router';
     NotesNavComponent,
     NoteManagerComponent,
     HeaderComponent,
-    NoteViewerComponent
+    NoteViewerComponent,
+    NotesLevelComponent
   ],
   imports: [
     BrowserModule,
