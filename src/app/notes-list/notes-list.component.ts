@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-//import { Note } from '../note'
+// import { Note } from '../note'
 
 import {ActivatedRoute} from '@angular/router';
 
@@ -15,13 +15,13 @@ import { NoteService} from '../note.service';
 })
 export class NotesListComponent implements OnInit {
 
-  //topic: Topic; 
+  // topic: Topic; 
 
   // topic$: Observable <Topic>; ist käse - Niemand subscribet
   topic: Topic;
 
   
-  //notesList$: Observable <Note[]>; ist käse - Niemand subscribe
+  // notesList$: Observable <Note[]>; ist käse - Niemand subscribe
 
   notesList: Note[];
   selectedNote: Note;
@@ -33,88 +33,45 @@ export class NotesListComponent implements OnInit {
     private location: Location
     ) { }
 
-  //das Topic des NotesList.Component wird darüber bestimmt,
-  // auf welchen Topic-Namen in der Url navigiert wurde:
-
-/*
-  getTopic() : void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    // ! The JavaScript + operator converts the string to a number, which is what a hero id should be
-    this.noteService.getTopic(id).subscribe(topic => this.onNewTopic(topic));
-    
-  }
-
-  onNewTopic(topic){
-    this.topic$ = topic;
-    this.notesList$ = topic.notesList;
-    console.log(this.notesList$);
-  }
-*/
 
 
-  //gets the current id in the url in order to subscibeToTopic
+
+  // gets the current id in the url in order to subscibeToTopic
   // and ultimately get the current topic and noteslist
-  subscribeToRouteId() : void{
-    //const id = +this.route.paramMap.get('id');
+  subscribeToRouteId(): void{
+    // const id = +this.route.paramMap.get('id');
     let id: number;
     this.route.paramMap.subscribe((params) => {
-      
       id = +params.get('topicId');
       console.log('list-component topic id is now: ' + id);
       console.log(params);
       this.subscribeToTopic(id);
     });
   }
-  
-  subscribeToTopic(id: number) : void{
-    //console.log('subscribeToTopic id is now: ' +this.id);
+
+  subscribeToTopic(id: number): void {
+    // console.log('subscribeToTopic id is now: ' +this.id);
     // ! The JavaScript + operator converts the string to a number, which is what a hero id should be
     this.noteService.getTopic(id).subscribe(topic => {
       this.onNewTopic(topic);
-      //console.log('topic is now: ' + topic.name);
+      // console.log('topic is now: ' + topic.name);
     });
   }
 
   onNewTopic(topic){
     this.topic = topic;
     this.notesList = topic.notesList;
-    //console.log(this.notesList);
+    // console.log(this.notesList);
   }
 
   onSelect(note: Note): void {
     this.selectedNote = note;
   }
 
-  /*
-  getTopic() : void{
-    const name : string = this.route.snapshot.paramMap.get('name');// ! The JavaScript + operator converts the string to a number, which is what a hero id should be
-    this.noteService.getTopic(name).subscribe(topic => onNewTopic(topic))
-  }
-  */
-
-
-  /*
-  extractNotesList(): Note[]{
-    return this.topic$.notesList;
-  }
-*/
-
-  //Jedes Topic hat eine notesList, die von dem NotesList.Component angezeigt werden soll
-  //Diese muss über das Topic irgendwie einzuholen sein:
-
-  // - soll auf das ngOnInit irgendweiner Klasse den Topics eine notesList zugewiesen werden?
-  // -> eine vorgegebene wäre gut, sodass nicht anfangs mit http irgendetwas basierend auf namen 
-  // von Topics kompliziert automatisch generiert werde muss
-
-  //ein weiteres Observable sollte nich notwendig sein, da ja die Topics schon Observables sind, 
-  //welche ihre notesList schon enthalten sollten.
-
-
   ngOnInit() {
     this.subscribeToRouteId();
-    
-    
-    //this.notesList = this.extractNotesList();
+
+    // this.notesList = this.extractNotesList();
   }
 
   /*

@@ -9,21 +9,20 @@ import { NoteViewerComponent } from './note-viewer/note-viewer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/notes-manager', pathMatch: 'full' },
-  //{ path: 'notes-manager', component: NoteManagerComponent},
+  // { path: 'notes-manager', component: NoteManagerComponent},
 
   { path: 'notes-manager', 
     component: NoteManagerComponent,
     children: [
-      
+
       { path: ':topicId', component: NotesListComponent},
       { path: 'notes/:noteId', component: NoteViewerComponent, outlet:"note-view", pathMatch: 'full'}
-      
-       
+
     ]
   },
 
-  //{ path: 'notes-manager/:id', component: NotesListComponent, outlet:'note-list'}
-  //{ path: 'notes/:id', component: NotesListComponent}
+  // { path: 'notes-manager/:id', component: NotesListComponent, outlet:'note-list'}
+  // { path: 'notes/:id', component: NotesListComponent}
 ];
 
 @NgModule({
