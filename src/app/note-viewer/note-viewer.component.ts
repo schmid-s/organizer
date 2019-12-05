@@ -13,14 +13,18 @@ import { Topic } from '../topic';
 })
 export class NoteViewerComponent implements OnInit {
 
+  topicId: number;
+  topic: Topic;
+  noteId: number;
   note: Note;
+  placeHolder: String = "Add your text here...";
 
-  //parentId: number;
+  // parentId: number;
 
   constructor(
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private router: Router,
-    private noteService: NoteService, 
+    private noteService: NoteService,
     private location: Location
   ) {
     /*
@@ -31,48 +35,23 @@ export class NoteViewerComponent implements OnInit {
 
 
 
-  getTopic() : number {
-    let topicId: number;
-    this.route.paramMap.subscribe((params) => {
-      
-      topicId = +params.get('id');
-      console.log('parent: ' + topicId );
-      
-    });
-    return topicId;
-  }
 
-
-
-//muss ich hier wirklich subscriben oder reicht denn nicht
-//eine reine zuweisung des werts der parent id um die note zu holen?
-//die anzeige der richtigen notelist managet ja die noteslist,
-//die die url bestimmt...wenn diese sich ändert weiß das aber
+// muss ich hier wirklich subscriben oder reicht denn nicht
+// eine reine zuweisung des werts der parent id um die note zu holen?
+// die anzeige der richtigen notelist managet ja die noteslist,
+// die die url bestimmt...wenn diese sich ändert weiß das aber
 // der notes-viewr trotzdem nicht-> ausprobieren:
 
-//////////////////////////////////////////////////// in progress:
 
-/*
-  getTopic() : number {
-    let topicId: number;
-    topicId = 
-      console.log('parent: ' + topicId );
-      
-    });
-    return topicId;
-  }
-*/
 
 /////////////////////////////////////////////////////
 /*
-  
   //gets the current id in the url in order to subscibeToTopic
   // and ultimately get the up to date topic and noteslist
   subscribeToRouteId() : void{
     let noteId: number;
     this.route.paramMap.subscribe((params) => {
       console.log('topic id is now: ' + this.getTopic());
-      
       noteId = +params.get('id1');
       this.subscribeToNote(this.getTopic(), noteId);
       console.log('note id is now: ' + noteId);
@@ -96,72 +75,44 @@ export class NoteViewerComponent implements OnInit {
 */
 /////////////////////////////////////////////////////////////
 
-  //gets the current id in the url in order to subscibeToTopic
+  // gets the current id in the url in order to subscibeToTopic
   // and ultimately get the current topic and noteslist
 
 
-  subscribeToRouteId() : void{
-    //const id = +this.route.paramMap.get('id');
-    let topicId: number;
-    //console.log(this.route.paramMap.toString);
-
-
-//mit paramMap funktioniert nicht mehr mit secondary route
-
-    
+  getTopicId(): void {
     this.route.paramMap.subscribe(params => {
-      topicId = +params.get('topicId');
-      console.log('topic: ' + topicId );
-      console.log('note gleich anfangs: ' +params.get('noteId') );
-      console.log(this.route);
-      console.log(params );
-      this.subscribeToTopic(topicId);
-    });
-    
+      this.topicId = +params.get('topicId');
+      console.log('note viewer topic id: ' + this.topicId );
+      this.subscribeToTopic();
+  });
+  }
 
-    // snapshot-versuch:
-    /*
-    topicId = this.route.snapshot.params.topicId;
-    console.log('topic mit snapshot: ' + topicId );
-    this.subscribeToTopic(topicId);
-    */
+  subscribeToTopic(): void {
+    this.noteService.getTopic(this.topicId).subscribe(topic => {
+      this.topic = topic;
+      console.log('viewer topic name is now: ' + this.topic.name);
+      this.getNoteId();
+    });
+  }
+
+  getNoteId(): void{
+    this.route.paramMap.subscribe(params => {
+      this.noteId = +params.get('noteId');
+      
+      console.log('note viewer note id: ' + this.noteId );
+      this.onNewTopic(this.noteId);
+    });
   }
   
+  onNewTopic(noteId: number) {
+    this.note = this.topic.notesList[noteId - 11];
+    this.note.id = this.topic.notesList[noteId - 11].id;
+    this.note.title = this.topic.notesList[noteId - 11].title;
+    this.note.text = this.topic.notesList[noteId - 11].text;
+    // console.log(this.note.id);
+  }
   
-  subscribeToTopic(id: number) : void{
-    //console.log('subscribeToTopic id is now: ' +this.id);
-    // ! The JavaScript + operator converts the string to a number, which is what a hero id should be
-    
-    let noteId: number;
-    
-    this.route.paramMap.subscribe(params => {
-      noteId = +params.get('noteId');
-      console.log('note: ' + noteId );
-    });
-
-    this.noteService.getTopic(id).subscribe(topic => {
-      this.onNewTopic(topic, noteId);
-      console.log('topic is now: ' + topic.name);
-    });
-
-    
-
-  }
-
-  onNewTopic(topic: Topic, noteId : number){
-    this.note = topic.notesList[noteId - 10];
-    this.note.id = topic.notesList[noteId - 10].id;
-    this.note.title = topic.notesList[noteId - 10].title;
-    this.note.text = topic.notesList[noteId - 10].text;
-    //console.log(this.note.id);
-  }
-
-  getNote() : void{
-
-  }
-
   ngOnInit() {
-    this.subscribeToRouteId();
+    this.getTopicId();
   }
-
 }

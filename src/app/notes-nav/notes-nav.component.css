@@ -11,12 +11,17 @@
 :host{
     font-size: 1.25rem;
     padding: 1rem;
-    
+    z-index: 0;
     /*fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-evenly"*/
+    /*
+    -webkit-box-shadow: 0px -15px 40px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px -15px 40px 0px rgba(0,0,0,0.75);
+box-shadow: 0px -15px 40px 0px rgba(0,0,0,0.75);
+    */
 }
 
+
 ul{
-    
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -59,24 +64,16 @@ a {
     -webkit-appearance: none;
     -moz-appearance: none;
 
-
-
-
     border-radius: 100vh;
 }
 
 a:hover,
 a:focus {
     background: #0053ba;
-    background: #000000;
-}
-
-a:focus {
-    outline: 1px solid #fff;
-    outline-offset: -4px;
 }
 
 a:active {
     transform: scale(0.99);
+    background: rgb(0, 206, 171);
 }
 

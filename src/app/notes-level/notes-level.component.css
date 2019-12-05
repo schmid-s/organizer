@@ -1,0 +1,19 @@
+:host{
+    flex: 1 1 100px;
+    flex-direction: row;
+    display: flex;
+    
+    box-sizing: border-box;
+    align-items: stretch;
+    
+
+    flex: 1 1 auto;
+    z-index: 0;
+}
+
+@media only screen and (max-width: 599px) {
+    :host{
+        flex-direction: column;
+        
+    }
+}

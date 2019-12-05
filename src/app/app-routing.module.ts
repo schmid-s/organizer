@@ -4,18 +4,18 @@ import {ExtraOptions} from "@angular/router";
 
 import { NoteManagerComponent } from './note-manager/note-manager.component';
 import { NotesLevelComponent } from './notes-level/notes-level.component';
+import { NotesListComponent } from './notes-list/notes-list.component';
 import { NoteViewerComponent } from './note-viewer/note-viewer.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: '/notes-manager', pathMatch: 'full' },
-  //{ path: 'notes-manager', component: NoteManagerComponent},
+  // { path: 'notes-manager', component: NoteManagerComponent},
 
-  { path: 'notes-manager', 
+  { path: 'notes-manager',
     component: NoteManagerComponent,
     children: [
-      
-      { path: ':topicId', 
+      { path: ':topicId',
         component: NotesLevelComponent,
         children: [
           { path: 'notes/:noteId', component: NoteViewerComponent}
@@ -24,8 +24,8 @@ const routes: Routes = [
     ]
   },
 
-  //{ path: 'notes-manager/:id', component: NotesListComponent, outlet:'note-list'}
-  //{ path: 'notes/:id', component: NotesListComponent}
+  // { path: 'notes-manager/:id', component: NotesListComponent, outlet:'note-list'}
+  // { path: 'notes/:id', component: NotesListComponent}
 ];
 
 @NgModule({

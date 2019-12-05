@@ -14,17 +14,17 @@ export class NoteService {
 
   private topicsUrl = 'api/topics';
 
-  //private noteListUrl = 'api/noteList${topic.id}'
+  // private noteListUrl = 'api/noteList${topic.id}'
 
   constructor(private http: HttpClient) { }
 
 
-  //nimmt id und returnt das Topic Observable mit dieser id aus der Datenbank
+  // nimmt id und returnt das Topic Observable mit dieser id aus der Datenbank
   getTopic(id: number): Observable <Topic>{
     const url = `${this.topicsUrl}/${id}`;
     return this.http.get<Topic>(url).pipe(
       tap(_ => console.log(`fetched topic id=${id}`)),
-      //catchError(this.handleError<Topic>(`getTopic id=${id}`))
+      // catchError(this.handleError<Topic>(`getTopic id=${id}`))
     );
   }
 

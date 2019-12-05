@@ -7,12 +7,7 @@
     
 }
 
-.note-column-wrapper{
-    flex: 1 1 auto;
-    -webkit-box-shadow: inset 0px 100vh 34px calc(-100vh - 7px) rgba(0, 0, 0, 0.30);
-    -moz-box-shadow: inset 0px 100vh 34px calc(-100vh - 7px) rgba(0,0,0,0.30);
-    box-shadow: inset 0px 100vh 34px calc(-100vh - 7px) rgba(0, 0, 0, 0.30);
-}
+
 /*
 app-notes-list{
     background-color: rgb(239, 238, 245);

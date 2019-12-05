@@ -1,12 +1,8 @@
-<p>
-    Test
-</p>
-<div *ngIf="note">
-  {{note.id}}
-  <p class="note-title">
-    {{note.title}}
-  </p>
+<form *ngIf="note">
+  <h2 class="note-title">
+      <input [(ngModel)]="note.title">
+  </h2>
   <p class="note-text">
-    {{note.text}}
+      <textarea [(ngModel)]="note.text" placeholder=""></textarea>
   </p>
-</div>
+</form>
