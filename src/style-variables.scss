@@ -1,0 +1,41 @@
+/* colors */
+
+$base-color: white;
+$html-background-color: #3c3c3c;
+$html-background-color: #262626;
+$html-background-color: #212121;
+$html-background-color: #212121;
+$high-contrast-color: rgb(60,60,60);
+$high-contrast-color: #474747;
+$medium-contrast-color: rgb(95, 95, 95);
+$canvas-color: rgb(250, 244, 237);
+$canvas-color: #fbf7f2;
+$accent-color-1: #0069ed;
+
+
+
+$font-color-high-contrast-primary: white;
+$font-color-high-contrast-secondary:#3c3c3c;
+
+
+$header-bg-color: $high-contrast-color;
+$text-field-bg-color: transparent; 
+$text-field-font-color: $font-color-high-contrast-primary;
+
+/* spaces */
+
+$thin-space: 1px;
+$medium-space: 3px;
+
+$site-component-margin: .3rem;
+
+$site-component-rounded-corners: .6rem;
+$text-field-padding: 5rem;
+
+main{
+    //margin: $site-component-margin;
+    margin: 0 -$site-component-margin -$site-component-margin -$site-component-margin;
+    //margin: calc(§* -$site-component-margin);
+    
+    
+}

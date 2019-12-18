@@ -2,8 +2,9 @@
       Wird auch im Heroes-Tutorial so gehandhabt...
 -->
 <div *ngIf="topic">
+  <!---
   <h2>{{topic.name}}</h2>
-  <!----<div *ngIf="topic">-->
+  -->
       <ul>  
         <li *ngFor="let note of notesList"
           [class.selected]="note === selectedNote"

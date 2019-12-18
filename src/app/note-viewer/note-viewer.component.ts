@@ -9,7 +9,7 @@ import { Topic } from '../topic';
 @Component({
   selector: 'app-note-viewer',
   templateUrl: './note-viewer.component.html',
-  styleUrls: ['./note-viewer.component.css']
+  styleUrls: ['./note-viewer.component.scss']
 })
 export class NoteViewerComponent implements OnInit {
 
@@ -17,7 +17,7 @@ export class NoteViewerComponent implements OnInit {
   topic: Topic;
   noteId: number;
   note: Note;
-  placeHolder: String = "Add your text here...";
+  noteTextEmpty: Boolean = false;
 
   // parentId: number;
 
@@ -33,7 +33,9 @@ export class NoteViewerComponent implements OnInit {
     */
   }
 
-
+  ngOnInit() {
+    this.getTopicId();
+  }
 
 
 // muss ich hier wirklich subscriben oder reicht denn nicht
@@ -103,6 +105,15 @@ export class NoteViewerComponent implements OnInit {
       this.onNewTopic(this.noteId);
     });
   }
+
+  isNoteTextEmpty() : void{
+    if (this.note.text == '') {
+      this.noteTextEmpty = true;
+      console.log("eeeempty");
+    } else {
+      this.noteTextEmpty = false;
+    }
+  }
   
   onNewTopic(noteId: number) {
     this.note = this.topic.notesList[noteId - 11];
@@ -112,7 +123,5 @@ export class NoteViewerComponent implements OnInit {
     // console.log(this.note.id);
   }
   
-  ngOnInit() {
-    this.getTopicId();
-  }
+  
 }

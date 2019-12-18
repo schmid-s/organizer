@@ -1,0 +1,69 @@
+@import "../../style-variables.scss";
+
+:host{
+    //border-top: $thin-space solid $canvas-color;
+    background-color: $high-contrast-color;
+    flex: 1 1 1;
+    padding: 0;
+    color: white;
+    z-index: -1;
+    margin: $site-component-margin;
+    border-radius: $site-component-rounded-corners;
+}
+
+h2{
+    text-align: center;
+    font-size: 1.8rem;
+    padding: 0 0 3rem 0;
+    width: 100%;
+    width: 100%;
+}
+
+ul{
+    margin-left: 0rem;
+}
+
+li{
+    text-align: left;
+    
+    /**border-bottom: $thin-space solid rgb(250, 243, 236) ;*/
+}
+
+li a {
+    width: 100%;
+    display: block;
+    border: none;
+    padding: 1.4rem 3.2rem;
+    margin: 0;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 1.2rem;
+    color: $font-color-high-contrast-primary;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /*border-radius: 100vh;*/
+    /*
+    background: radial-gradient(
+    75% 48% at top,
+    rgba(250, 244, 237, 0.1), $high-contrast-color
+    );
+    */
+}
+
+a:hover,
+a:focus {
+    color: #ffffff;
+    background: #0069ed;
+}
+a:active {
+    transform: scale(0.99);
+}
+
+.selected a{
+    color: rgb(109, 109, 109);
+    background: #faf4ed;
+}

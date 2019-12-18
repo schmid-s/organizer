@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+@import "./style-variables.scss";
 
 html{
     /*typical default brower size of 16  reduced to 10 as our rem value
@@ -7,31 +7,22 @@ html{
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 300;
     list-style: none;
+    background-color: $html-background-color;
 }
 
 *{
     margin: 0;
     padding: 0;
     list-style-type: none;
+    box-sizing: border-box;
 }
 
 body{
     font-size: 1.6rem;
 }
 
-/*
-body :first-child{
-    display: flex;
-    flex-direction: column;
-}
-*/
-
 html, body{
     height: 100vh;
-}
-
-h1{
-    font-size: 2.2rem;
 }
 
 app-root {

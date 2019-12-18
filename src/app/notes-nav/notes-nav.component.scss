@@ -1,0 +1,65 @@
+@import "../../style-variables.scss";
+
+:host{
+    font-size: 1.25rem;
+    padding: .6rem 1rem;
+    margin: $site-component-margin;
+    z-index: 0;
+    /*
+    -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.6);
+    -moz-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.6);
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.6);
+    */
+    z-index:2;
+    background-color: $high-contrast-color;
+    border-radius: $site-component-rounded-corners;
+}
+
+ul{
+    display: flex
+    /* fxLayout.xs="column" in Html beachten!!! */
+}
+
+li{ 
+    text-align: center;
+    margin-right: .6rem;
+}
+
+.active{
+    background-color: $accent-color-1;
+    color: $font-color-high-contrast-primary;
+}
+
+a {
+    width: 100%;
+    display: inline-block;
+    border: none;
+    padding: 0.7rem 1rem;
+    margin: 0;
+    text-decoration: none;
+    background: $medium-contrast-color;
+    color: $font-color-high-contrast-primary;
+    font-family: sans-serif;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, 
+                transform 150ms ease;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+    //border-radius: 100vh;
+    border-radius: .6rem;
+}
+
+a:hover,
+a:focus {
+    background-color: $medium-contrast-color;
+    color: $canvas-color;
+    border: $medium-space solid $accent-color-1;
+    
+    padding: calc(0.7rem - #{$medium-space}) calc(1rem - #{$medium-space});
+    /*
+    box-shadow: -webkit-box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
+    -moz-box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
+    box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
+    */
+}

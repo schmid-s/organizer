@@ -10,8 +10,6 @@ import { NoteViewerComponent } from './note-viewer/note-viewer.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/notes-manager', pathMatch: 'full' },
-  // { path: 'notes-manager', component: NoteManagerComponent},
-
   { path: 'notes-manager',
     component: NoteManagerComponent,
     children: [

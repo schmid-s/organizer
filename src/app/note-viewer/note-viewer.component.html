@@ -1,8 +1,5 @@
-<form *ngIf="note">
-  <h2 class="note-title">
-      <input [(ngModel)]="note.title">
-  </h2>
-  <p class="note-text">
-      <textarea [(ngModel)]="note.text" placeholder=""></textarea>
-  </p>
+<form *ngIf="note" fxLayout="column">
+  <input class="note-title" [(ngModel)]="note.title" name="noteTitle">
+  <label class="notes-label" *ngIf="this.noteTextEmpty">Add your notes here</label>
+  <textarea [(ngModel)]="note.text" name="noteText" (ngModelChange)="this.isNoteTextEmpty()"></textarea>
 </form>
