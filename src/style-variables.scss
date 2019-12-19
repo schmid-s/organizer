@@ -1,10 +1,10 @@
 /* colors */
 
 $base-color: white;
-$html-background-color: #3c3c3c;
-$html-background-color: #262626;
-$html-background-color: #212121;
-$html-background-color: #212121;
+$background-color1: #3c3c3c;
+$-background-color2: #262626;
+$background-color3: #212121;
+$background-color4: #1b1b1b;
 $high-contrast-color: rgb(60,60,60);
 $high-contrast-color: #474747;
 $medium-contrast-color: rgb(95, 95, 95);
@@ -14,8 +14,8 @@ $accent-color-1: #0069ed;
 
 
 
-$font-color-high-contrast-primary: white;
-$font-color-high-contrast-secondary:#3c3c3c;
+$font-color-high-contrast-primary: rgb(238, 238, 238);
+$font-color-high-contrast-secondary:$background-color4;
 
 
 $header-bg-color: $high-contrast-color;
@@ -24,17 +24,18 @@ $text-field-font-color: $font-color-high-contrast-primary;
 
 /* spaces */
 
-$thin-space: 1px;
-$medium-space: 3px;
+$thin-space: .1rem;
+$medium-space: .3rem;
 
-$site-component-margin: .3rem;
+
+$site-component-margin: $medium-space;
 
 $site-component-rounded-corners: .6rem;
 $text-field-padding: 5rem;
 
 main{
     //margin: $site-component-margin;
-    margin: 0 -$site-component-margin -$site-component-margin -$site-component-margin;
+    //margin: 0 -$site-component-margin -$site-component-margin -$site-component-margin;
     //margin: calc(§* -$site-component-margin);
     
     

@@ -1,3 +1,5 @@
+@import "../../style-variables.scss";
+
 :host{
     flex: 1 1 100px;
     flex-direction: row;
@@ -6,6 +8,8 @@
     align-items: stretch;
     flex: 1 1 auto;
     z-index: 0;
+    background: rgb(0,0,0);
+    background: linear-gradient(to bottom, #1b1b1b 0%,#212121 2rem);
 }
 
 @media only screen and (max-width: 599px) {

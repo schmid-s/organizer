@@ -2,8 +2,8 @@
 
 :host{
     font-size: 1.25rem;
-    padding: .6rem 1rem;
-    margin: $site-component-margin;
+    padding: 0 1rem;
+    //margin: $site-component-margin;
     z-index: 0;
     /*
     -webkit-box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.6);
@@ -12,7 +12,7 @@
     */
     z-index:2;
     background-color: $high-contrast-color;
-    border-radius: $site-component-rounded-corners;
+    //border-radius: $site-component-rounded-corners;
 }
 
 ul{
@@ -28,6 +28,11 @@ li{
 .active{
     background-color: $accent-color-1;
     color: $font-color-high-contrast-primary;
+
+    background-color: $background-color4;
+    padding: 0.7rem 1rem 1.3rem 1rem;
+    margin-bottom: 0;
+    border-radius: .6rem .6rem 0 0;
 }
 
 a {
@@ -35,7 +40,7 @@ a {
     display: inline-block;
     border: none;
     padding: 0.7rem 1rem;
-    margin: 0;
+    margin: .6rem 0;
     text-decoration: none;
     background: $medium-contrast-color;
     color: $font-color-high-contrast-primary;
@@ -50,16 +55,13 @@ a {
     border-radius: .6rem;
 }
 
-a:hover,
-a:focus {
-    background-color: $medium-contrast-color;
+a:hover{
     color: $canvas-color;
-    border: $medium-space solid $accent-color-1;
-    
     padding: calc(0.7rem - #{$medium-space}) calc(1rem - #{$medium-space});
-    /*
-    box-shadow: -webkit-box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
-    -moz-box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
-    box-shadow: inset 0px 0px 6px 0px rgba(0,0,0,1);
-    */
+    border: $medium-space solid $accent-color-1;
+}
+
+.active:hover{
+    padding: calc(0.7rem - #{$medium-space}) calc(1rem - #{$medium-space}) 1.3rem calc(1rem - #{$medium-space});
+    border-bottom: none;
 }

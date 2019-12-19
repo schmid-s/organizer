@@ -9,7 +9,7 @@ import { NoteService} from '../note.service';
 @Component({
   selector: 'app-notes-level',
   templateUrl: './notes-level.component.html',
-  styleUrls: ['./notes-level.component.css']
+  styleUrls: ['./notes-level.component.scss']
 })
 export class NotesLevelComponent implements OnInit {
 

@@ -7,7 +7,8 @@
     padding: 0;
     color: white;
     z-index: -1;
-    margin: $site-component-margin;
+    //margin: $site-component-margin;
+    margin: 1.4rem;
     border-radius: $site-component-rounded-corners;
 }
 
@@ -38,7 +39,7 @@ li a {
     text-decoration: none;
     font-family: sans-serif;
     font-size: 1.2rem;
-    color: $font-color-high-contrast-primary;
+    color: $font-color-high-contrast-secondary;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, 
@@ -64,6 +65,6 @@ a:active {
 }
 
 .selected a{
-    color: rgb(109, 109, 109);
-    background: #faf4ed;
+    color: $font-color-high-contrast-primary;
+    background: $background-color3;
 }
