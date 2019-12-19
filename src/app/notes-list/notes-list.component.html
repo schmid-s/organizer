@@ -11,7 +11,7 @@
           (click)="onSelect(note)">      
           <!--<a [routerLink]="[ '', { outlets: { note-view: 'topic.id','notes' , note.id } }]" routerLinkActive="active">{{note.title}}</a>-->
           <!--<a [routerLink]="[ '/notes-manager', { outlets: { primary: [topic.id] ,'note-view': 'notes/' + [note.id] } }]" routerLinkActive="active">{{note.title}}</a>-->
-          <a routerLink="notes/{{note.id}}" routerLinkActive="active">{{note.title}}</a>
+          <a routerLink="notes/{{note.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">{{note.title}}</a>
         </li>    
       </ul>
   </div>
