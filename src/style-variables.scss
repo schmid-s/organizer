@@ -2,9 +2,14 @@
 
 $base-color: white;
 $background-color1: #3c3c3c;
-$-background-color2: #262626;
+$background-color1: #4d4d4d;
+$background-color2: #262626;
+$background-color2: #292929;
 $background-color3: #212121;
 $background-color4: #1b1b1b;
+$background-color3: #212121;
+$background-color4: #171717;
+$background-color4: #191919;
 $high-contrast-color: rgb(60,60,60);
 $high-contrast-color: #474747;
 $medium-contrast-color: rgb(95, 95, 95);
@@ -16,6 +21,7 @@ $accent-color-1: #0069ed;
 
 $font-color-high-contrast-primary: rgb(238, 238, 238);
 $font-color-high-contrast-secondary:$background-color4;
+$font-color-max-dark: #080808;
 
 
 $header-bg-color: $high-contrast-color;
