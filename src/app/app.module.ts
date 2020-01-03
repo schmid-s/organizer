@@ -16,6 +16,8 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RouterModule } from '@angular/router';
 import { NotesLevelComponent } from './notes-level/notes-level.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { NotesLevelComponent } from './notes-level/notes-level.component';
       InMemoryDataService, { dataEncapsulation: false }
     ),
 
-    AppRoutingModule
+    AppRoutingModule,
+
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
