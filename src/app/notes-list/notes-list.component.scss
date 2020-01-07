@@ -29,11 +29,9 @@ ul{
 
 li{
     text-align: left;
-    
-    /**border-bottom: $thin-space solid rgb(250, 243, 236) ;*/
 }
 
-li a {
+a {
     width: 100%;
     display: block;
     border: none;
@@ -42,28 +40,20 @@ li a {
     text-decoration: none;
     font-family: sans-serif;
     font-size: 1.2rem;
-    color: $font-color-high-contrast-secondary;
-    color: $background-color1;
+    color: $font-color-medium-contrast;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, 
                 transform 150ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
-    /*border-radius: 100vh;*/
-    /*
-    background: radial-gradient(
-    75% 48% at top,
-    rgba(250, 244, 237, 0.1), $high-contrast-color
-    );
-    */
+
     :hover{
         color: white;
     }
 }
 
-a:hover,
-a:focus {
+a:hover, a:focus {
     color: #ffffff;
     background: #0069ed;
 }
