@@ -2,12 +2,15 @@
 
 :host{
     z-index:10;
+    //border-bottom: 2px solid $background-color4;
 }
 
 header{
     height: auto;
-    padding: 1rem;
     z-index: 1;
+    padding: .8rem 2rem .8rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
+    padding: 1.4rem 2rem .8rem 2rem;
     background-color: $header-bg-color;
 }
 

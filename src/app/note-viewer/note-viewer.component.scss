@@ -28,10 +28,11 @@ form *{
 
 .note-title{
     font-weight: 600;
-    margin-bottom: 2.2rem;
+    margin-bottom: 1.8rem;
 }
 
 input{
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
     font-weight: 600;
     background-color: transparent;
     border:none;
@@ -39,8 +40,8 @@ input{
 }
 
 .notes-label{
-    margin-bottom: -1.6rem;
-    font-size: 1.6rem;
+    margin-bottom: -1.5rem;
+    font-size: 1.5rem;
 }
 
 textarea{
@@ -51,7 +52,8 @@ textarea{
     -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
-    font-size: 1.6rem;
+    font-family: "Open Sans", Helvetica, Arial, sans-serif;
+    font-size: 1.5rem;
     resize: none;
 }
 

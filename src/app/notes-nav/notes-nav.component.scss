@@ -12,7 +12,7 @@
     */
     z-index:2;
     background-color: $notes-nav-bg-color;
-    box-shadow: 0px 0px 10px 8px $background-color4;
+    box-shadow: 0px 0px 10px 8px $shadow-color;
 }
 
 ul{
@@ -28,27 +28,35 @@ li{
 .active{
     background-color: $accent-color-1;
     color: $font-color-high-contrast-primary;
-
     background-color: $background-color4;
-    padding: 0.7rem 1rem 1.3rem 1rem;
+    background: $background-color3;
+    padding: 0.8rem 1rem 1.1rem 1rem;
     margin-bottom: 0;
     border-radius: .6rem .6rem 0 0;
+    //box-shadow:inset 0px 6px 6px 2px $background-color4;
+    //-webkit-box-shadow: inset 0px 16px 17px -5px $shadow-color;
+    //-moz-box-shadow: inset 0px 16px 17px -5px $shadow-color;
+    //box-shadow: inset 0px 16px 17px -5px $shadow-color;
+    -webkit-box-shadow: inset 0px 4px 3px 1px $shadow-color;
+    -moz-box-shadow: inset 0px 4px 3px 1px $shadow-color;
+    box-shadow: inset 0px  4px 3px 1px $shadow-color;
 }
 
 a {
     width: 100%;
     display: inline-block;
     border: none;
-    padding: 0.7rem 1rem;
-    margin: .6rem 0;
+    padding: 0.8rem 1rem;
+    margin: .3rem 0;
     text-decoration: none;
     background: $medium-contrast-color;
+    background: transparent;
     color: $font-color-high-contrast-primary;
-    font-family: sans-serif;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, 
-                transform 250ms ease;
+                transform 250ms ease,
+                box-shadow 250ms ease;
                 -webkit-appearance: none;
                 -moz-appearance: none;
     //border-radius: 100vh;
@@ -57,8 +65,13 @@ a {
 
 a:not(.active):hover{
     color: $canvas-color;
-    padding: calc(0.7rem - #{$medium-space}) calc(1rem - #{$medium-space});
-    border: $medium-space solid $accent-color-1;
+    //padding: calc(0.7rem - #{$medium-space}) calc(1rem - #{$medium-space});
+    //border: $medium-space solid $background-color4;
+    background: $background-color3;
+    //-webkit-box-shadow: inset 0px 10px 10px -5px $background-color4;
+    //-moz-box-shadow: inset 0px 10px 10px -5px $background-color4;
+    //box-shadow: inset 0px 10px 10px -5px $background-color4;
+    
 }
 
 .active{
