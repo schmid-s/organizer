@@ -54,7 +54,8 @@ a {
     color: $font-color-high-contrast-primary;
     cursor: pointer;
     text-align: center;
-    transition: background 250ms ease-in-out, 
+    transition: //background-color 250ms ease-in-out, 
+                //background 250ms ease-in-out,
                 transform 250ms ease,
                 box-shadow 250ms ease;
                 -webkit-appearance: none;
@@ -63,15 +64,75 @@ a {
     border-radius: .6rem;
 }
 
+a:not(.active){
+    position: relative;
+}
+
 a:not(.active):hover{
     color: $canvas-color;
-    //padding: calc(0.7rem - #{$medium-space}) calc(1rem - #{$medium-space});
-    //border: $medium-space solid $background-color4;
-    background: $background-color3;
-    //-webkit-box-shadow: inset 0px 10px 10px -5px $background-color4;
-    //-moz-box-shadow: inset 0px 10px 10px -5px $background-color4;
-    //box-shadow: inset 0px 10px 10px -5px $background-color4;
-    
+    background: #222222; /* Old browsers */
+    background: -moz-linear-gradient(top, $background-color3 30%, #313131 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $background-color3 30%,#313131 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $background-color3 30%,#313131 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    -webkit-box-shadow: inset 0px 8px 3px -3px $shadow-color;
+    -moz-box-shadow: inset 0px 8px 3px -3px $shadow-color;
+    box-shadow: inset 0px 8px 3px -3px $shadow-color;
+}
+
+a:not(.active):active{
+    background: #222222;
+    background: #222222; /* Old browsers */
+    background: -moz-linear-gradient(top, $background-color3 0%, #222222 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $background-color3 0%,#222222 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $background-color3 0%,#222222 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: transparent;
+    -webkit-box-shadow: inset 0px 4px 3px 1px $shadow-color;
+    -moz-box-shadow: inset 0px 4px 3px 1px $shadow-color;
+    box-shadow: inset 0px  4px 3px 1px $shadow-color;
+    position:relative;
+}
+
+a:not(.active):hover::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: -moz-linear-gradient(top, $background-color3 0%, #222222 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $background-color3 0%,#222222 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $background-color3 0%,#222222 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    -webkit-box-shadow: inset 0px 4px 3px 1px $shadow-color;
+    -moz-box-shadow: inset 0px 4px 3px 1px $shadow-color;
+    box-shadow: inset 0px  4px 3px 1px $shadow-color;
+    z-index: -1;
+    transition: opacity .25s ease,
+                box-shadow .25s ease,
+                background-color 2s ease;
+    opacity: 0;
+    border-radius: .6rem;
+}
+  
+a:not(.active):active::before {
+    opacity: 1;
+}
+
+a:not(.active):hover:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #222222; /* Old browsers */
+    background: -moz-linear-gradient(top, $background-color3 30%, #313131 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $background-color3 30%,#313131 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $background-color3 30%,#313131 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    -webkit-box-shadow: inset 0px 8px 3px -3px $shadow-color;
+    -moz-box-shadow: inset 0px 8px 3px -3px $shadow-color;
+    box-shadow: inset 0px 8px 3px -3px $shadow-color;
+    z-index: -5;
+    border-radius: .6rem;
 }
 
 .active{
