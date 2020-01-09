@@ -42,7 +42,11 @@ li{
     box-shadow: inset 0px  4px 3px 1px $shadow-color;
 }
 
-a {
+.newTopic-li{
+    margin-left: auto;
+}
+
+a,.newTopic-li button {
     width: 100%;
     display: inline-block;
     border: none;
@@ -54,9 +58,11 @@ a {
     color: $font-color-high-contrast-primary;
     cursor: pointer;
     text-align: center;
-    transition: background-color 3250ms ease-in-out, 
-                background 3250ms ease-in-out,
+    transition: background-color .3s ease-in-out, 
+                background .3s ease-in-out,
                 transform .3s ease,
+                padding .3s ease-out,
+                margin .3s ease-out,
                 box-shadow .45s ease;
                 -webkit-appearance: none;
                 -moz-appearance: none;
@@ -79,7 +85,7 @@ a:not(.active):hover{
     box-shadow: inset 0px 8px 3px -3px $shadow-color;
 }
 
-a:not(.active):active{
+a:not(.active):active {
     background: #222222;
     background: #222222; /* Old browsers */
     background: -moz-linear-gradient(top, $background-color3 0%, #222222 100%); /* FF3.6-15 */
