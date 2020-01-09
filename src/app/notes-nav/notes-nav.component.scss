@@ -54,10 +54,10 @@ a {
     color: $font-color-high-contrast-primary;
     cursor: pointer;
     text-align: center;
-    transition: //background-color 250ms ease-in-out, 
-                //background 250ms ease-in-out,
-                transform 250ms ease,
-                box-shadow 250ms ease;
+    transition: background-color 3250ms ease-in-out, 
+                background 3250ms ease-in-out,
+                transform .3s ease,
+                box-shadow .45s ease;
                 -webkit-appearance: none;
                 -moz-appearance: none;
     //border-radius: 100vh;
@@ -106,9 +106,9 @@ a:not(.active):hover::before {
     -moz-box-shadow: inset 0px 4px 3px 1px $shadow-color;
     box-shadow: inset 0px  4px 3px 1px $shadow-color;
     z-index: -1;
-    transition: opacity .25s ease,
-                box-shadow .25s ease,
-                background-color 2s ease;
+    transition: opacity .3s ease,
+                box-shadow .3s ease,
+                background-color .3s ease;
     opacity: 0;
     border-radius: .6rem;
 }
@@ -136,5 +136,5 @@ a:not(.active):hover:after {
 }
 
 .active{
-    transition: padding-bottom 250ms ease;
+    transition: padding-bottom .3s ease;
 }
