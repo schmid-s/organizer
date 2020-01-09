@@ -31,7 +31,7 @@ li{
     text-align: left;
 }
 
-a {
+a, button {
     width: 100%;
     display: block;
     border: none;
@@ -40,6 +40,7 @@ a {
     text-decoration: none;
     font-size: 1.2rem;
     color: $font-color-medium-contrast;
+    background-color: transparent;
     cursor: pointer;
     text-align: center;
     transition: background 250ms ease-in-out, 
@@ -52,12 +53,16 @@ a {
     }
 }
 
-a:hover, a:focus {
+a:hover, a:focus, button:hover {
     color: #ffffff;
     background: #0069ed;
 }
 
-a:active {
+button:focus {
+    outline: none;
+}
+
+a:active, b:active {
     transform: scale(0.99);
 }
 

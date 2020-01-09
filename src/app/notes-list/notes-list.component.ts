@@ -8,6 +8,7 @@ import { Topic } from '../topic';
 import { Note } from '../note';
 import { NoteService } from '../note.service';
 import { switchMap } from 'rxjs/operators';
+import { IndexeddbService } from '../indexeddb.service';
 
 @Component({
   selector: 'app-notes-list',
@@ -31,9 +32,19 @@ export class NotesListComponent implements OnInit, OnChanges {
   constructor(
     private route: ActivatedRoute,
     private noteService: NoteService,
-    private location: Location
+    private location: Location,
+    private indexeddbService: IndexeddbService
     ) { }
 
+
+  ngOnInit() {
+    console.log('list-component topic id is now: ' + this.topicId);
+    this.subscribeToTopic();
+    console.log('list-component topic id is now: ' + this.topicId);
+    // this.notesList = this.extractNotesList();
+    this.indexeddbService.createDB();
+    this.indexeddbService.addNote();
+  }
   /*
   getTopicId(): void {
     this.route.paramMap.subscribe(params => {
@@ -74,11 +85,10 @@ export class NotesListComponent implements OnInit, OnChanges {
     this.selectedNote = note;
   }
 
-  ngOnInit() {
-    console.log('list-component topic id is now: ' + this.topicId);
-    this.subscribeToTopic();
-    console.log('list-component topic id is now: ' + this.topicId);
-    // this.notesList = this.extractNotesList();
+  createNote() : void {
+
   }
+
+  
 
 }

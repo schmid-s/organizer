@@ -6,6 +6,9 @@
   <h2>{{topic.name}}</h2>
   -->
       <ul>  
+        <li>
+          <button (click)="createNote()">New Note</button>
+        </li>
         <li *ngFor="let note of notesList"
           [class.selected]="note === selectedNote"
           (click)="onSelect(note)">      
