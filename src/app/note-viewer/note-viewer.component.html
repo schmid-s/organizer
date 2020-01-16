@@ -1,5 +1,8 @@
+<a class="closeComponentLink" routerLink="/notes-manager/{{topic.id}}">
+  <div></div>
+</a>
 <form *ngIf="note" fxLayout="column">
   <input class="note-title" [(ngModel)]="note.title" name="noteTitle">
   <label class="notes-label" *ngIf="this.noteTextEmpty">Add your notes here</label>
-  <textarea [(ngModel)]="note.text" name="noteText" (ngModelChange)="this.isNoteTextEmpty()"></textarea>
+  <textarea [(ngModel)]="note.text" name="noteText" (ngModelChange)="this.isNoteTextEmpty()" spellcheck="false"></textarea>
 </form>

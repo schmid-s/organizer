@@ -20,7 +20,7 @@ export class IndexeddbService {
     //this.createDB();
     //this.addNote();
   }
-  
+  /*
   viewNotes() {
       const tx = this.db.transaction("personal_notes","readonly");
       const pNotes = tx.objectStore("personal_notes");
@@ -34,6 +34,7 @@ export class IndexeddbService {
           }
       }
   }
+  */
   async addNote() {
       console.log(this.db);
       const note = {
@@ -41,11 +42,11 @@ export class IndexeddbService {
           text: "This is my note"
       }
       const tx = this.db.transaction("personal_notes", "readwrite");
-      tx.onerror = e => alert( ` Error! ${e.target.error}  `);
+      //tx.onerror = e => alert( ` Error! ${e.target.error}  `);
       const pNotes = await tx.objectStore("personal_notes");
       pNotes.add(note);
   }
-  async createDB() : void {
+  createDB() {
       //const dbName = (<HTMLInputElement>document.getElementById("txtDB")).value;
       //const dbVersion = (<HTMLInputElement>document.getElementById("txtVersion")).value;
       const dbName = "db1";
@@ -66,7 +67,7 @@ export class IndexeddbService {
           //on success 
           request.onsuccess = e => {
               this.db = (<IDBOpenDBRequest>e.target).result;
-              alert(`success is called database name: ${this.db.name} version : ${this.db.version}`);
+              //alert(`success is called database name: ${this.db.name} version : ${this.db.version}`);
               console.log("success");
           }
           //on error

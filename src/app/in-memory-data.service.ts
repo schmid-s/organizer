@@ -10,8 +10,7 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const topics = [
-      { id: 11, 
-        name: 'To Dos', 
+      { id: 'To Dos', 
         notesList: [
           { id: 11, title: 'To Do 21.01.19', text: 'This is example Text 1' },
           { id: 12, title: 'To Do 20.01.19', text: 'This is example Text 2' },
@@ -22,15 +21,19 @@ export class InMemoryDataService implements InMemoryDbService {
           { id: 17, title: 'To Do 15.01.19', text: 'This is example Text 7' },
           { id: 18, title: 'To Do 14.01.19', text: 'This is example Text 8' },
           { id: 19, title: 'To Do 13.01.19', text: 'This is example Text 9' },
-          { id: 20, title: 'To Do 12.01.19', text: 'This is example Text 0' }
+          { id: 21, title: 'To Do 12.01.19', text: 'This is example Text 0' },
+          { id: 22, title: 'To Do 12.01.19', text: 'This is example Text 0' },
+          { id: 23, title: 'To Do 12.01.19', text: 'This is example Text 0' },
+          { id: 24, title: 'To Do 12.01.19', text: 'This is example Text 0' },
+          { id: 25, title: 'To Do 12.01.19', text: 'This is example Text 0' },
+          { id: 26, title: 'To Do 12.01.19', text: 'This is example Text 0' }
         ] 
     
       },
 
 
 
-      { id: 12, 
-        name: 'Ideas',
+      { id: 'Ideas',
         notesList:[
           { id: 11, title: 'Topic 2, note 1', text: 'This is an example Text for Topic 2...' },
           { id: 12, title: 'Topic 2, note 2', text: 'This is an example Text for Topic 2...' },
@@ -44,8 +47,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
 
 
-      { id: 13, 
-        name: 'Present ideas',
+      { id: 'Present ideas',
         notesList:[
           { id: 11, title: 'Topic 3, note 1', text: 'Some note of topic three' },
           { id: 12, title: 'Topic 3, note 2', text: 'Some note of topic three' },

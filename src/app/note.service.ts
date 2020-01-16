@@ -20,7 +20,7 @@ export class NoteService {
 
 
   // nimmt id und returnt das Topic Observable mit dieser id aus der Datenbank
-  getTopic(id: number): Observable <Topic>{
+  getTopic(id: string): Observable <Topic>{
     const url = `${this.topicsUrl}/${id}`;
     return this.http.get<Topic>(url).pipe(
       tap(_ => console.log(`fetched topic id=${id}`)),

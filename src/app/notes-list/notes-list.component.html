@@ -1,21 +1,19 @@
-<!--  Warum wird *ngIf="topic" gebraucht, wo doch per onInit das topic definiert wird?
-      Wird auch im Heroes-Tutorial so gehandhabt...
--->
-<div *ngIf="topic">
-  <!---
-  <h2>{{topic.name}}</h2>
-  -->
-      <ul>  
-        <li>
-          <button (click)="createNote()">New Note</button>
-        </li>
-        <li *ngFor="let note of notesList"
-          [class.selected]="note === selectedNote"
-          (click)="onSelect(note)">      
-          <!--<a [routerLink]="[ '', { outlets: { note-view: 'topic.id','notes' , note.id } }]" routerLinkActive="active">{{note.title}}</a>-->
-          <!--<a [routerLink]="[ '/notes-manager', { outlets: { primary: [topic.id] ,'note-view': 'notes/' + [note.id] } }]" routerLinkActive="active">{{note.title}}</a>-->
-          <a routerLink="notes/{{note.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">{{note.title}}</a>
-        </li>    
-      </ul>
+<div *ngIf="topic" [ngClass]="{'gridView': this.viewAsGrid, 'hidden-list': this.componentHidden}">
+  <button *ngIf="!this.componentHidden" (click)="createNote()">New Note</button>
+  <ul *ngIf="!this.componentHidden" id="notesList-ul">  
+    <li *ngFor="let note of notesList"
+      [class.selected]="note === selectedNote"
+      (click)="onSelect(note)">      
+      <!--<a [routerLink]="[ '', { outlets: { note-view: 'topic.id','notes' , note.id } }]" routerLinkActive="active">{{note.title}}</a>-->
+      <!--<a [routerLink]="[ '/notes-manager', { outlets: { primary: [topic.id] ,'note-view': 'notes/' + [note.id] } }]" routerLinkActive="active">{{note.title}}</a>-->
+      <a routerLink="notes/{{note.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">{{note.title}}</a>
+    </li>
+  </ul>
+  <div class="notesListOptions">
+    <button class="notesListOptions symbol" (click)="changeListLayout()" *ngIf="!this.componentHidden">{{this.currentViewModeBtnText}}</button>
+    <button class="notesListOptions" (click)="changeHideState()">{{this.currentHideStateBtnText}}</button>
   </div>
+</div>
+
+
   

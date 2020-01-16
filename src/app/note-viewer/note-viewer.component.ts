@@ -13,7 +13,7 @@ import { Topic } from '../topic';
 })
 export class NoteViewerComponent implements OnInit {
 
-  topicId: number;
+  topicId: string;
   topic: Topic;
   noteId: number;
   note: Note;
@@ -36,7 +36,6 @@ export class NoteViewerComponent implements OnInit {
   ngOnInit() {
     this.getTopicId();
   }
-
 
 // muss ich hier wirklich subscriben oder reicht denn nicht
 // eine reine zuweisung des werts der parent id um die note zu holen?
@@ -83,7 +82,7 @@ export class NoteViewerComponent implements OnInit {
 
   getTopicId(): void {
     this.route.paramMap.subscribe(params => {
-      this.topicId = +params.get('topicId');
+      this.topicId = params.get('topicId');
       console.log('note viewer topic id: ' + this.topicId );
       this.subscribeToTopic();
   });

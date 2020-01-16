@@ -8,13 +8,13 @@
     align-items: stretch;
     flex: 1 1 auto;
     z-index: 0;
+    padding: 1.4rem;
     //background: #1b1b1b;
     //background: linear-gradient(to bottom, #1b1b1b 0%,#212121 2rem);
 }
 
 @media only screen and (max-width: 599px) {
     :host{
-        flex-direction: column;
-        
+        flex-direction: column; 
     }
 }

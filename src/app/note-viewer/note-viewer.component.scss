@@ -1,13 +1,48 @@
 @import "../../style-variables.scss";
 
 :host{
-    padding: $text-field-padding;
+    position: relative;
+    padding: $text-field-padding 0;
     z-index: -1;
-    flex: 4 1 auto;
+    flex: 1;
+    flex-direction: column;
     display: flex;
-    margin: $site-component-margin;
     border-radius: $site-component-rounded-corners;
     background-color: $text-field-bg-color;
+}
+/*
+:host > *{
+    padding: 0 $text-field-padding;
+}
+*/
+.closeComponentLink{
+    position: absolute;
+    right: $text-field-padding;
+    top: 2.8rem;
+    display: block;
+    color: $background-color1;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 2.5rem;
+    padding: .83rem .734rem .9rem .86rem;
+    border-radius: .6rem;
+    letter-spacing: 0;
+    line-height: 1.33rem;
+}
+
+.closeComponentLink:hover{
+    -webkit-box-shadow: inset 0px 0px 0px .2rem $background-color1;
+    -moz-box-shadow: inset 0px 0px 0px .2rem $background-color1;
+    box-shadow: inset 0px 0px 0px .2rem $background-color1;
+    color: $font-color-high-contrast-primary;
+}
+
+.closeComponentLink div{
+    transform: rotate(45deg);
+}
+
+.closeComponentLink div::after{ 
+    content: '+';
 }
 
 div{
@@ -24,6 +59,7 @@ form{
 
 form *{
     color: $text-field-font-color;
+    padding: 0 $text-field-padding;
 }
 
 .note-title{
@@ -56,6 +92,7 @@ textarea{
     font-size: 1.5rem;
     resize: none;
 }
+
 
 /*
 textarea:hover, input:hover{
