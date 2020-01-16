@@ -64,7 +64,7 @@ export class NoteViewerComponent implements OnInit {
     // ! The JavaScript + operator converts the string to a number, which is what a hero id should be
     this.noteService.getNote(topicId, noteId).subscribe(note => {
       this.onNewNote(note);
-      //console.log('topic is now: ' + topic.name);
+      //console.log('topic is now: ' + topic.id);
     });
   }
 
@@ -91,7 +91,7 @@ export class NoteViewerComponent implements OnInit {
   subscribeToTopic(): void {
     this.noteService.getTopic(this.topicId).subscribe(topic => {
       this.topic = topic;
-      console.log('viewer topic name is now: ' + this.topic.name);
+      console.log('viewer topic name is now: ' + this.topic.id);
       this.getNoteId();
     });
   }

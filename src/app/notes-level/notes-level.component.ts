@@ -81,7 +81,7 @@ export class NotesLevelComponent implements OnInit {
     // ! The JavaScript + operator converts the string to a number, which is what a hero id should be
     this.noteService.getTopic(id).subscribe(topic => {
       this.onNewTopic(topic);
-      // console.log('topic is now: ' + topic.name);
+      // console.log('topic is now: ' + topic.id);
     });
   }
 
