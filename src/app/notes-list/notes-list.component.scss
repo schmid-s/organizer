@@ -2,7 +2,7 @@
 
 :host{
     //border-top: $thin-space solid $canvas-color;
-    background-color: $high-contrast-color;
+    //background-color: $high-contrast-color;
     background-color: $background-color2;
     flex: 1 1 1;
     display: flex;
@@ -50,6 +50,7 @@ ul{
     display: flex;
     overflow-y: overlay;
     direction: ltr;
+    z-index: 1000;
 }
 
 :host > div{
@@ -62,6 +63,10 @@ li{
     direction: ltr;
 }
 
+li:hover{
+    overflow: visible;
+}
+
 a, button {
     width: 100%;
     display: block;
@@ -72,10 +77,20 @@ a, button {
     font-size: 1.2rem;
     color: $font-color-medium-contrast;
     background-color: transparent;
+    background-color: $background-color2;
     cursor: pointer;
     text-align: center;
-    transition: background 250ms ease-in-out, 
-                transform 150ms ease;
+    border: 0 solid $background-color3;
+    transition: background $transition-duration1 ease-in, 
+                box-shadow $transition-duration1 ease-in,
+                border-bottom $transition-duration1 ease-in,
+                border-top $transition-duration1 ease-in,
+                border $transition-duration1 ease-in,
+                margin-bottom $transition-duration1 ease-in,
+                margin-top $transition-duration1 ease-in,
+                margin $transition-duration1 ease-in,
+                padding $transition-duration1 ease-in,
+                transform $transition-duration1 ease-in;
     -webkit-appearance: none;
     -moz-appearance: none;
 
@@ -84,7 +99,7 @@ a, button {
     }
 }
 
-a:hover, a:focus, button:hover {
+a:hover, a:focus, button:hover, button:focus {
     color: #ffffff;
     background: #0069ed;
     /*
@@ -99,6 +114,27 @@ a:hover, a:focus, button:hover {
     background: $background-color1;
     //background: -webkit-radial-gradient(center top, ellipse cover, $background-color4 0%,$text-field-bg-color 66%); /* Chrome10-25,Safari5.1-6 */
     //background: radial-gradient(ellipse at center top, $background-color4 -15%,$text-field-bg-color 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //box-shadow: 0px 8px 6px -6px $background-color4;
+    box-shadow: 0px 4px 3px 0px $background-color4;
+    z-index: 100;
+}
+
+a:hover, button:hover{
+    transform: translate(0, -$skeumorphic-button-height);
+    border-bottom: $skeumorphic-button-height solid $background-color3;
+    margin-top: -$skeumorphic-button-height;
+    margin-bottom: 0;
+    z-index: 100;
+}
+
+a:active, a:hover:active, button:active, button:hover:active{
+    transform: scale(0.99) translate(0, 0);
+    background-color: transparent;
+    border-bottom: 0 solid $background-color3;
+    box-shadow:none;
+    margin-bottom: 0;
+    margin-top:0;
+    margin: 0;
 }
 
 .gridView ul{
@@ -133,15 +169,19 @@ button:focus {
     outline: none;
 }
 
-a:active, b:active {
-    transform: scale(0.99);
-}
-
-.selected a{
+.selected a, .selected a:hover{
     color: $font-color-high-contrast-primary;
     background: $background-color3;
     //box-shadow: 20px 0px 0px 0px $background-color3, -20px 0px 0px 0px $background-color3,  inset 0px -16px 8px -8px $background-color4, inset 0px 16px 8px -8px $background-color4;
     box-shadow:inset 0px 10px 8px -8px $background-color4;
+    transform: translate(0, 0) ;
+    margin: 0;
+    border-bottom: 0 solid $background-color3;
+    border-top: $skeumorphic-button-height solid $background-color3;
+    margin-bottom: -$skeumorphic-button-height;
+    margin-top: 0;
+    padding: #{list-1-button-padding-top-bottom} $list-1-button-padding-left-right calc(#{list-1-button-padding-top-bottom} - #{$skeumorphic-button-height}) $list-1-button-padding-left-right;
+    
 }
 
 :host *::-webkit-scrollbar {
@@ -170,11 +210,7 @@ a:active, b:active {
 /* Handle */
 :host *::-webkit-scrollbar-thumb {
     border-left: .2rem solid $background-color4;
-    //-webkit-border-radius: .4rem;
-    //border-radius: .4rem;
     background: $background-color2;
-    
-    //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
 }
 
 :host * ul:hover::-webkit-scrollbar-track {
