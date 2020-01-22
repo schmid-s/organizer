@@ -131,9 +131,9 @@ a:not(.active):hover:after {
     bottom: 0;
     left: 0;
     background: #222222; /* Old browsers */
-    background: -moz-linear-gradient(top, $background-color3 30%, #313131 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, $background-color3 30%,#313131 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, $background-color3 30%,#313131 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    background: -moz-linear-gradient(top, $background-color3 30%, $background-color2 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, $background-color3 30%,$background-color2 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, $background-color3 30%,$background-color2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     -webkit-box-shadow: inset 0px 8px 3px -3px $shadow-color;
     -moz-box-shadow: inset 0px 8px 3px -3px $shadow-color;
     box-shadow: inset 0px 8px 3px -3px $shadow-color;

@@ -14,6 +14,7 @@
     box-shadow: 0px 0px 10px 6px $shadow-color;
     max-width: 50%;
     transition: margin-left .6s ease-out;
+    //overflow: auto;
     
     &.hidden-state-host{
         z-index: 200;
@@ -47,6 +48,8 @@ ul{
     flex: 1;
     flex-direction: column;
     display: flex;
+    overflow-y: overlay;
+    direction: ltr;
 }
 
 :host > div{
@@ -54,8 +57,9 @@ ul{
     flex-direction: column;
 }
 
-li{
+li{ 
     text-align: left;
+    direction: ltr;
 }
 
 a, button {
@@ -83,6 +87,18 @@ a, button {
 a:hover, a:focus, button:hover {
     color: #ffffff;
     background: #0069ed;
+    /*
+    background: #222222;
+    background: -moz-linear-gradient(top, $background-color3 -80%, $background-color2 130%);
+    background: -webkit-linear-gradient(top, $background-color3 -80%,$background-color2 130%);
+    background: linear-gradient(to bottom, $background-color3 -80%,$background-color2 130%);
+    -webkit-box-shadow: inset 0px 6px 4px -4x $background-color4;
+    -moz-box-shadow: inset 0px 6px 4px -4px $background-color4;
+    box-shadow: inset 0px 6px 4px -4px $background-color4;
+    */
+    background: $background-color1;
+    //background: -webkit-radial-gradient(center top, ellipse cover, $background-color4 0%,$text-field-bg-color 66%); /* Chrome10-25,Safari5.1-6 */
+    //background: radial-gradient(ellipse at center top, $background-color4 -15%,$text-field-bg-color 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 .gridView ul{
@@ -93,14 +109,18 @@ a:hover, a:focus, button:hover {
     justify-content: flex-start !important;
     align-items: flex-start !important;
     li{
-        flex: 1 0 33.333%;
+        flex: 0 0 calc(100% / 3);
     }
+}
+
+.new-note-btn{
+    border-bottom: 2px solid $background-color4;
 }
 
 .notesListOptions{
     display: flex;
     justify-content: space-evenly;
-    border-top: 1px solid $background-color4;
+    border-top: 2px solid $background-color4;
     button{
         padding: 1.5rem 1rem;
     }
@@ -123,3 +143,48 @@ a:active, b:active {
     //box-shadow: 20px 0px 0px 0px $background-color3, -20px 0px 0px 0px $background-color3,  inset 0px -16px 8px -8px $background-color4, inset 0px 16px 8px -8px $background-color4;
     box-shadow:inset 0px 10px 8px -8px $background-color4;
 }
+
+:host *::-webkit-scrollbar {
+    width: .9rem;
+}
+
+/* Track */
+:host *::-webkit-scrollbar-track {
+    border-left: .2rem solid $background-color4;
+    //-webkit-box-shadow: inset 0 0 .2rem $background-color4; 
+    //-webkit-border-radius: .4rem;
+    //border-radius: .4rem;
+    background-color: $background-color3;
+    
+}
+
+/*
+:host *::-webkit-scrollbar-button{
+    width: 100rem;
+    display: block;
+    background-color: red;
+    margin-left: -10px;
+}
+*/
+
+/* Handle */
+:host *::-webkit-scrollbar-thumb {
+    border-left: .2rem solid $background-color4;
+    //-webkit-border-radius: .4rem;
+    //border-radius: .4rem;
+    background: $background-color2;
+    
+    //-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+:host * ul:hover::-webkit-scrollbar-track {
+    border-left: .2rem solid $background-color4;
+}
+
+:host * ul:hover::-webkit-scrollbar-thumb {
+    border-left: .2rem solid $background-color4;
+    background-color: $font-color-medium-contrast;
+    background: $background-color1;
+}
+
+

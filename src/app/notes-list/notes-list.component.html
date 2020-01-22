@@ -1,5 +1,5 @@
 <div *ngIf="topic" [ngClass]="{'gridView': this.viewAsGrid, 'hidden-list': this.componentHidden}">
-  <button *ngIf="!this.componentHidden" (click)="createNote()">New Note</button>
+  <button class="new-note-btn" *ngIf="!this.componentHidden" (click)="createNote()">New Note</button>
   <ul *ngIf="!this.componentHidden" id="notesList-ul">  
     <li *ngFor="let note of notesList"
       [class.selected]="note === selectedNote"
@@ -10,8 +10,8 @@
     </li>
   </ul>
   <div class="notesListOptions">
-    <button class="notesListOptions symbol" (click)="changeListLayout()" *ngIf="!this.componentHidden">{{this.currentViewModeBtnText}}</button>
-    <button class="notesListOptions" (click)="changeHideState()">{{this.currentHideStateBtnText}}</button>
+    <button class="symbol" (click)="changeListLayout()" *ngIf="!this.componentHidden">{{this.currentViewModeBtnText}}</button>
+    <button (click)="changeHideState()">{{this.currentHideStateBtnText}}</button>
   </div>
 </div>
 

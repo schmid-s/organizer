@@ -22,6 +22,10 @@ body{
     font-size: 1.6rem;
 }
 
+main{
+    min-height: 0;
+}
+
 html, body{
     height: 100vh;
 }
