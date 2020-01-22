@@ -27,12 +27,13 @@
     "ajv": "^6.10.2",
     "angular-in-memory-web-api": "^0.9.0",
     "core-js": "^3.4.7",
+    "dexie": "^2.0.4",
     "rxjs": "~6.5.3",
     "tslib": "^1.10.0",
     "zone.js": "0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.21",
+    "@angular-devkit/build-angular": "^0.803.23",
     "@angular/cli": "^8.3.20",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "~8.2.14",
