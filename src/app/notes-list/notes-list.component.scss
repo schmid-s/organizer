@@ -1,8 +1,49 @@
 @import "../../style-variables.scss";
 
+
+:host *::-webkit-scrollbar {
+    width: .9rem;
+}
+
+/* Track */
+:host *::-webkit-scrollbar-track {
+    border-left: .2rem solid $background-color4;
+    //-webkit-box-shadow: inset 0 0 .2rem $background-color4; 
+    //-webkit-border-radius: .4rem;
+    //border-radius: .4rem;
+    background-color: $background-color3;
+    
+}
+
+/*
+:host *::-webkit-scrollbar-button{
+    width: 100rem;
+    display: block;
+    background-color: red;
+    margin-left: -10px;
+}
+*/
+
+/* Handle */
+:host *::-webkit-scrollbar-thumb {
+    border-left: .2rem solid $background-color4;
+    background: $background-color2;
+}
+
+:host * ul:hover::-webkit-scrollbar-track {
+    border-left: .2rem solid $background-color4;
+}
+
+:host * ul:hover::-webkit-scrollbar-thumb {
+    border-left: .2rem solid $background-color4;
+    background-color: $font-color-medium-contrast;
+    background: $background-color1;
+}
+
 :host{
     //border-top: $thin-space solid $canvas-color;
     //background-color: $high-contrast-color;
+    position: relative;
     background-color: $background-color2;
     flex: 1 1 1;
     display: flex;
@@ -44,13 +85,14 @@ h2{
 }
 
 ul{
+    //position: relative;
     margin-left: 0rem;
     flex: 1;
     flex-direction: column;
     display: flex;
-    overflow-y: overlay;
+    overflow-y: auto;
     direction: ltr;
-    z-index: 1000;
+    z-index: 2;
 }
 
 :host > div{
@@ -61,10 +103,6 @@ ul{
 li{ 
     text-align: left;
     direction: ltr;
-}
-
-li:hover{
-    overflow: visible;
 }
 
 a, button {
@@ -93,38 +131,14 @@ a, button {
                 transform $transition-duration1 ease-in;
     -webkit-appearance: none;
     -moz-appearance: none;
-
-    :hover{
-        color: white;
-    }
 }
 
 a:hover, a:focus, button:hover, button:focus {
     color: #ffffff;
-    background: #0069ed;
-    /*
-    background: #222222;
-    background: -moz-linear-gradient(top, $background-color3 -80%, $background-color2 130%);
-    background: -webkit-linear-gradient(top, $background-color3 -80%,$background-color2 130%);
-    background: linear-gradient(to bottom, $background-color3 -80%,$background-color2 130%);
-    -webkit-box-shadow: inset 0px 6px 4px -4x $background-color4;
-    -moz-box-shadow: inset 0px 6px 4px -4px $background-color4;
-    box-shadow: inset 0px 6px 4px -4px $background-color4;
-    */
     background: $background-color1;
-    //background: -webkit-radial-gradient(center top, ellipse cover, $background-color4 0%,$text-field-bg-color 66%); /* Chrome10-25,Safari5.1-6 */
-    //background: radial-gradient(ellipse at center top, $background-color4 -15%,$text-field-bg-color 90%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    //box-shadow: 0px 8px 6px -6px $background-color4;
     box-shadow: 0px 4px 3px 0px $background-color4;
     z-index: 100;
-}
-
-a:hover, button:hover{
-    transform: translate(0, -$skeumorphic-button-height);
-    border-bottom: $skeumorphic-button-height solid $background-color3;
-    margin-top: -$skeumorphic-button-height;
-    margin-bottom: 0;
-    z-index: 100;
+    
 }
 
 a:active, a:hover:active, button:active, button:hover:active{
@@ -151,6 +165,7 @@ a:active, a:hover:active, button:active, button:hover:active{
 
 .new-note-btn{
     border-bottom: 2px solid $background-color4;
+    z-index: 1;
 }
 
 .notesListOptions{
@@ -183,44 +198,4 @@ button:focus {
     padding: #{list-1-button-padding-top-bottom} $list-1-button-padding-left-right calc(#{list-1-button-padding-top-bottom} - #{$skeumorphic-button-height}) $list-1-button-padding-left-right;
     
 }
-
-:host *::-webkit-scrollbar {
-    width: .9rem;
-}
-
-/* Track */
-:host *::-webkit-scrollbar-track {
-    border-left: .2rem solid $background-color4;
-    //-webkit-box-shadow: inset 0 0 .2rem $background-color4; 
-    //-webkit-border-radius: .4rem;
-    //border-radius: .4rem;
-    background-color: $background-color3;
-    
-}
-
-/*
-:host *::-webkit-scrollbar-button{
-    width: 100rem;
-    display: block;
-    background-color: red;
-    margin-left: -10px;
-}
-*/
-
-/* Handle */
-:host *::-webkit-scrollbar-thumb {
-    border-left: .2rem solid $background-color4;
-    background: $background-color2;
-}
-
-:host * ul:hover::-webkit-scrollbar-track {
-    border-left: .2rem solid $background-color4;
-}
-
-:host * ul:hover::-webkit-scrollbar-thumb {
-    border-left: .2rem solid $background-color4;
-    background-color: $font-color-medium-contrast;
-    background: $background-color1;
-}
-
 

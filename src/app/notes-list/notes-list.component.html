@@ -1,9 +1,7 @@
 <div *ngIf="topic" [ngClass]="{'gridView': this.viewAsGrid, 'hidden-list': this.componentHidden}">
   <button class="new-note-btn" *ngIf="!this.componentHidden" (click)="createNote()">New Note</button>
   <ul *ngIf="!this.componentHidden" id="notesList-ul">  
-    <li *ngFor="let note of notesList"
-      [class.selected]="note === selectedNote"
-      (click)="onSelect(note)">      
+    <li *ngFor="let note of notesList; first as firstLiNote" [ngClass]="{ first: firstLiNote}" [class.selected]="note === selectedNote" (click)="onSelect(note)">      
       <!--<a [routerLink]="[ '', { outlets: { note-view: 'topic.id','notes' , note.id } }]" routerLinkActive="active">{{note.title}}</a>-->
       <!--<a [routerLink]="[ '/notes-manager', { outlets: { primary: [topic.id] ,'note-view': 'notes/' + [note.id] } }]" routerLinkActive="active">{{note.title}}</a>-->
       <a routerLink="notes/{{note.id}}" routerLinkActive="active" [routerLinkActiveOptions]="{exact:false}">{{note.title}}</a>
