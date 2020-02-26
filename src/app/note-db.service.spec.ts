@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { MasterDetailService } from './master-detail.service';
+import { NoteDbService } from './note-db.service';
 
-describe('MasterDetailService', () => {
+describe('NoteDbService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: MasterDetailService = TestBed.get(MasterDetailService);
+    const service: NoteDbService = TestBed.get(NoteDbService);
     expect(service).toBeTruthy();
   });
 });

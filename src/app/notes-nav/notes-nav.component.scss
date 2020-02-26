@@ -2,7 +2,7 @@
 
 :host{
     font-size: 1.25rem;
-    padding: 0 1rem;
+    padding: 0 1.4rem;
     //margin: $site-component-margin;
     z-index: 0;
     /*
@@ -42,22 +42,79 @@ li{
     box-shadow: inset 0px  4px 3px 1px $shadow-color;
 }
 
-.newTopic-li{
-    margin-left: auto;
+button{
+    outline: none;
 }
 
-a,.newTopic-li button {
-    width: 100%;
-    display: inline-block;
-    border: none;
+input{
+    background-color: $background-color3;
+    outline: none;
+}
+
+
+
+a, button, input{
     padding: 0.8rem 1rem;
     margin: .3rem 0;
+    border: none;
+    border-radius: .6rem;
+    color: $font-color-high-contrast-primary;
+}
+
+.topic-creation-wrapper,.new-topic-btn{
+    margin-left: auto;
+    & > *{
+        margin-left: .6rem;
+        white-space: nowrap;
+        }
+}
+
+.closeComponentLink, .topic-creation-wrapper>button{
+    font-weight: 500;
+    font-size: 2.5rem;
+    letter-spacing: 0;
+    line-height: 1.33rem;
+}
+
+.closeComponentLink{
+    position: absolute;
+    right: $text-field-padding;
+    top: 2.8rem;
+    right: 0;
+    top: 0;
+    display: block;
+    color: $background-color1;
+    display: inline-block;
+    padding: .83rem .734rem .9rem .86rem;
+    border-radius: .6rem;
+    letter-spacing: 0;
+    line-height: 1.33rem;
+}
+
+.closeComponentLink:hover{
+    -webkit-box-shadow: inset 0px 0px 0px .2rem $background-color1;
+    -moz-box-shadow: inset 0px 0px 0px .2rem $background-color1;
+    box-shadow: inset 0px 0px 0px .2rem $background-color1;
+    color: $font-color-high-contrast-primary;
+}
+
+.closeComponentLink div{
+    transform: rotate(45deg);
+}
+
+.closeComponentLink div::after{ 
+    content: '+';
+}
+
+a, button {
+    display: inline-block;
     text-decoration: none;
     background: $medium-contrast-color;
     background: transparent;
-    color: $font-color-high-contrast-primary;
+    
     cursor: pointer;
     text-align: center;
+    white-space: nowrap;
     transition: background-color .3s ease-in-out, 
                 background .3s ease-in-out,
                 transform .3s ease,
@@ -70,11 +127,11 @@ a,.newTopic-li button {
     border-radius: .6rem;
 }
 
-a:not(.active){
+a:not(.active), button:not(.active){
     position: relative;
 }
 
-a:not(.active):hover{
+a:not(.active):hover, button:not(.active):hover{
     color: $canvas-color;
     background: #222222; /* Old browsers */
     background: -moz-linear-gradient(top, $background-color3 30%, #313131 100%); /* FF3.6-15 */
@@ -85,7 +142,7 @@ a:not(.active):hover{
     box-shadow: inset 0px 8px 3px -3px $shadow-color;
 }
 
-a:not(.active):active {
+a:not(.active):active, button:not(.active):active {
     background: #222222;
     background: #222222; /* Old browsers */
     background: -moz-linear-gradient(top, $background-color3 0%, #222222 100%); /* FF3.6-15 */
@@ -98,7 +155,7 @@ a:not(.active):active {
     position:relative;
 }
 
-a:not(.active):hover::before {
+a:not(.active):hover::before, button:not(.active):hover::before {
     position: absolute;
     content: "";
     top: 0;
@@ -119,11 +176,11 @@ a:not(.active):hover::before {
     border-radius: .6rem;
 }
   
-a:not(.active):active::before {
+a:not(.active):active::before, button:not(.active):active::before {
     opacity: 1;
 }
 
-a:not(.active):hover:after {
+a:not(.active):hover:after, button:not(.active):hover:after {
     position: absolute;
     content: "";
     top: 0;

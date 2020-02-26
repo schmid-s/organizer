@@ -92,9 +92,11 @@ export class InMemoryDataService implements InMemoryDbService {
   // if the heroes array is not empty, the method below returns the highest
   // hero id + 1.
 
+  /*
   genId(topics: Topic[]): number {
     return topics.length > 0 ? Math.max(...topics.map(topic => topic.id)) + 1 : 11;
   }
+  */
 
   /*
   genId<T extends Hero | Crises | SuperHero>(myTable: T[]): number {

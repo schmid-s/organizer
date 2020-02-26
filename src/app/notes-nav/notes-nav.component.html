@@ -1,5 +1,15 @@
-<ul class ="notes-nav" fxLayout.xs="column" flexLayoutAlign="start">
-  <li *ngFor="let topic of topicsArray">
-      <a routerLink="/notes-manager/{{topic.id}}" routerLinkActive="active">{{topic.id}}</a>
-  </li>
-</ul>
+<nav fxLayout.xs="column">
+  <ul class ="notes-nav" fxLayout.xs="column" flexLayoutAlign="start">
+    <li *ngFor="let topic of topicsArray">
+        <a routerLink="/notes-manager/{{topic.id}}" routerLinkActive="active">{{topic.title}}</a>
+    </li>
+  </ul>
+  <button class="new-topic-btn" *ngIf="!topicFormOpen" [ngClass]="{'hidden-list': this.componentHidden}" fxFlex="0 1 auto" (click)="openNewTopicForm()">New Topic</button>
+  <div class="topic-creation-wrapper" *ngIf="topicFormOpen" fxFlex="0 1 auto">
+    <input [(ngModel)]="newTopicName" fxFlex="0 1 auto" (keyup)="isTopicTextEmpty()">
+    <button *ngIf="!topicTextEmpty" fxFlex="0 1 auto" (click)="createNewTopic(); closeNewTopicForm()">+</button>
+    <button class="closeComponentLink" (click)="closeNewTopicForm()" fxFlex="0 1 auto">
+      <div></div>
+    </button>
+  </div>
+</nav>

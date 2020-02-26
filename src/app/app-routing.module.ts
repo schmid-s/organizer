@@ -11,12 +11,16 @@ import { NoteViewerComponent } from './note-viewer/note-viewer.component';
 const routes: Routes = [
   { path: '', redirectTo: '/notes-manager', pathMatch: 'full' },
   { path: 'notes-manager',
+    //pathMatch: 'full',
     component: NoteManagerComponent,
     children: [
       { path: ':topicId',
+        //pathMatch: 'full',
         component: NotesLevelComponent,
         children: [
+          { path: 'notes/new', component: NoteViewerComponent, pathMatch: 'full', data: { newNoteState: true }},
           { path: 'notes/:noteId', component: NoteViewerComponent}
+          
         ]
       }
     ]

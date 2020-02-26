@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of, from} from 'rxjs';
+import { map, switchMap, filter } from 'rxjs/operators';
 import { Topic } from './topic';
 import {Note} from './note';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, ActivationEnd } from '@angular/router';
+import { NoteDbService } from './note-db.service';
+import Dexie from 'dexie';
 
 
 @Injectable({
@@ -13,24 +15,86 @@ import { ActivatedRoute } from '@angular/router';
 export class NoteService {
 
   private topicsUrl = 'api/topics';
+  private notesTable: Dexie.Table<Note, number>;
+  private topicsTable: Dexie.Table<Topic, number>;
+  private $noteId: Observable<number>;
+  private $topicId: Observable<number>;
+  private params;
 
   // private noteListUrl = 'api/noteList${topic.id}'
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient, 
+    private noteDBService: NoteDbService, 
+    private route: ActivatedRoute,
+    private router: Router) 
+    {
+    this.notesTable = this.noteDBService.table('notes');
+    this.topicsTable = this.noteDBService.table('topics');
+  }
+
+  getAllNotes(topicId: number) : Observable<Note[]>{
+    console.log('noteservice performing getAllNotes on topicId: '+topicId);
+    return from(this.notesTable.where("topicId").equals(topicId).toArray());
+  }
+
+  getNote(noteId: number) : Observable<Note>{
+    console.log('noteservice performing getNote on noteId: '+noteId);
+    return from(this.notesTable.get(noteId));
+  }
+
+  getAllTopics() : Observable<Topic[]>{
+    return from(this.topicsTable.toArray());
+  }
+
+  addNote(data) {
+    return this.notesTable.add(data);
+  }
+
+  addTopic(data) {
+    const newTopic: Topic  = new Topic(data);
+    return this.topicsTable.add( newTopic);
+  }
+
+  updateNote(id, data) {
+    return this.notesTable.update(id, data);
+  }
+
+  removeNote(id) {
+    return this.notesTable.delete(id);
+  }
 
 
-  // nimmt id und returnt das Topic Observable mit dieser id aus der Datenbank
-  getTopic(id: string): Observable <Topic>{
-    const url = `${this.topicsUrl}/${id}`;
-    return this.http.get<Topic>(url).pipe(
-      tap(_ => console.log(`fetched topic id=${id}`)),
-      // catchError(this.handleError<Topic>(`getTopic id=${id}`))
+  subscribeToCurrentNoteId(): void{
+    this.route.paramMap.subscribe(params => {
+      this.$noteId = of(+params.get('noteId')),
+      error => {
+        console.log('possibly no noteId available');
+      }
+    });
+  }
+
+  getCurrentNote(): Observable<Note> {
+    let note: Observable<Note>;
+    this.$noteId.subscribe(id => {note = from(this.notesTable.get(id))});
+    return note;
+  }
+
+
+
+  getCurrentTopic(topicId : number): Observable<Topic> {
+    //let topic: Observable<Topic>;
+    //this.$topicId.subscribe(id => {topic = from(this.topicsTable.get(id))});
+    //return topic;
+    return this.$topicId.pipe(
+      switchMap( id => {
+        console.log('switchmap output id is'+(id));
+        return from(this.topicsTable.get(id));
+      })
     );
   }
 
-  getTopics(): Observable <Topic[]>{
-    return this.http.get<Topic[]>(this.topicsUrl);
-  }
+
 
 
 ////////////////////////////////////////////in progress:

@@ -17,7 +17,7 @@ export class NotesLevelComponent implements OnInit {
 
   // topic$: Observable <Topic>; ist käse - Niemand subscribet
   //@Input() topic: Topic;
-  @Input() topicId: string;
+  @Input() topicId: number;
   // notesList$: Observable <Note[]>; ist käse - Niemand subscribe
 
   notesList: Note[];
@@ -31,7 +31,7 @@ export class NotesLevelComponent implements OnInit {
   
   getTopicId(): void {
     this.route.paramMap.subscribe((params) => {
-      this.topicId = params.get('topicId');
+      this.topicId = +params.get('topicId');
       console.log('note-level topic id is now: ' + this.topicId);
     });
   }
