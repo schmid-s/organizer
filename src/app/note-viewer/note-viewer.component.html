@@ -1,4 +1,4 @@
-<a class="closeComponentLink" routerLink="/notes-manager/{{topic.id}}">
+<a *ngIf="topicId" class="closeComponentLink" routerLink="/notes-manager/{{topicId}}">
   <div></div>
 </a>
 <form *ngIf="note" fxLayout="column">

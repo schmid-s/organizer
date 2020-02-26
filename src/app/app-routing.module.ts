@@ -18,7 +18,7 @@ const routes: Routes = [
         //pathMatch: 'full',
         component: NotesLevelComponent,
         children: [
-          { path: 'notes/new', component: NoteViewerComponent, pathMatch: 'full', data: { newNoteState: true }},
+          { path: 'notes/new', component: NoteViewerComponent, pathMatch: 'full'},
           { path: 'notes/:noteId', component: NoteViewerComponent}
           
         ]
