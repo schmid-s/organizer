@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, QueryList, ViewChildren } from '@angular/core';
 import { Note } from '../note';
 import {ActivatedRoute, Router, ParamMap} from '@angular/router';
 
@@ -19,7 +19,12 @@ export class NoteViewerComponent implements OnInit {
   topic: Topic;
   noteId: number;
   note?: Note;
+
+  //@ViewChild("noteTitle", {static: false}) titleInput: ElementRef;
+  @ViewChildren("noteTitle") titleInput: QueryList<ElementRef>;
+
   noteTextEmpty: boolean = false;
+  noteTitleEmpty: boolean = false;
   newNoteState: boolean;
 
   // parentId: number;
@@ -39,56 +44,26 @@ export class NoteViewerComponent implements OnInit {
   ngOnInit() {
     //this.actOnRouteParams();
     this.getNotesOnNewTopic();
+
   }
 
+  ngAfterViewInit(){
+    if(this.newNoteState) this.setFocusToTitleInput();
+    //this.isNoteTitleEmpty();
+    //this.isNoteTextEmpty();
+  }
 
 /////////////////////////////////////////////////////
-/*
-  actOnRouteParams(){
-    this.route.paramMap.pipe(
-      iif (params => params.has('new'),
 
-      )
-        
-      
+setFocusToTitleInput(){
+  console.log('setting focus');
+  if (this.titleInput.length > 0) {
+    console.log("this.titleInput.first.nativeElement is "+this.titleInput.first.nativeElement);
+    this.titleInput.first.nativeElement.focus();
+    //sdfgsdgthis.titleInput.first.nativeElement.style.backgroundColor = 'blue';
+  }
+}
 
-    )
-    
-    
-    
-    .subscribe( params => {
-      this.topicId = +params.get('topicId');
-      if(params.has('new')){
-        console.log('this.noteId = '+this.noteId);
-        this.note = new Note('');
-      }
-      else if(params.has('noteId')){
-        this.noteId = +params.get('noteId');
-        console.log('this.noteId = '+this.noteId);
-        this.note = this.noteService.getNote(this.noteId);
-      }
-      
-    })
-  }
-*/
-/*
-  getNotesOnNewTopic(){
-    this.route.paramMap.pipe(
-      iif(() => true, 
-      this.noteService.getNote(this.noteId),
-      true)(
-      
-    )).subscribe( (note) => {
-      if(this.newNoteState == true){
-        this.createNewNote();
-      }
-      else {
-        if(this.noteId) this.note = note;
-        console.log('this.note = '+this.note);
-      }
-    });
-  }
-*/
 caseParamsHasNoNew(params){
   this.noteId = +params.get('noteId');
   console.log("Params Has No New")
@@ -104,16 +79,21 @@ caseParamsHasNew(params){
 getNotesOnNewTopic(){
   this.route.paramMap.pipe(
     tap((params) => this.topicId = +params.get('topicId')),
-    switchMap(params => {
-              console.log("________________________________________________");
-     
+    switchMap(params =>
+             iif(() => this.getCurrentRouteEnd() == 'new',
+              of(params),
+              this.caseParamsHasNoNew(params)
+              )
+              /*
+              switchMap(params => 
               
-              if(this.getCurrentRouteEnd() == 'new'){
-              return this.caseParamsHasNew(params)
-              } else{
-              return this.caseParamsHasNoNew(params)
-              }
-            }
+                iif(() => params.has('new'),
+                this.caseParamsHasNew(params),
+                this.caseParamsHasNoNew(params)
+                )
+              )
+              */
+            
     )
   ).subscribe( (output) => {
     /*
@@ -132,10 +112,12 @@ getNotesOnNewTopic(){
 
     if(output instanceof Note){
       if(this.noteId) this.note = output;
-      console.log('this.note = '+this.note);
+      //console.log('this.note = '+this.note);
     } 
     else if(this.instanceOfParamMap(output)){
       this.createNewNote();
+      this.checkIfInputsEmpty();
+      //this.setFocusToTitleInput();
     }
     else{
       throwError;
@@ -149,76 +131,22 @@ getNotesOnNewTopic(){
   });
 }
 
-instanceOfParamMap(object: any): object is ParamMap {
-  return 'keys' in object;
-}
-
-getCurrentRouteEnd(){
-  return this.route.snapshot.url[this.route.snapshot.url.length -1].path;
-}
-/*
-  getNotesOnNewTopic(){
-    this.route.paramMap.pipe(
-      switchMap(params => {
-        this.topicId = +params.get('topicId');
-        if(params.has('new')){
-          console.log('this.noteId = '+this.noteId);
-          return of("")
-        }
-        else if(params.has('noteId')){
-          this.noteId = +params.get('noteId');
-          console.log('this.noteId = '+this.noteId);
-          return this.noteService.getNote(this.noteId);
-        }
-      })
-    ).subscribe( (note) => {
-      if(note == ""){
-        this.createNewNote;
-      }
-      else {
-        if(this.noteId) this.note = note;
-        console.log('this.note = '+this.note);
-      }
-    });
+  instanceOfParamMap(object: any): object is ParamMap {
+    return 'keys' in object;
   }
-  */
+
+  getCurrentRouteEnd(){
+    return this.route.snapshot.url[this.route.snapshot.url.length -1].path;
+  }
+
   createNewNote(){
     console.log('create new note');
-    let note = new Note('');
-
-    return note;
+    this.note = new Note('');
+    this.newNoteState = true;
   }
 
   
-
-/*
-  //gets the current id in the url in order to subscibeToTopic
-  // and ultimately get the up to date topic and noteslist
-  subscribeToRouteId() : void{
-    let noteId: number;
-    this.route.paramMap.subscribe((params) => {
-      console.log('topic id is now: ' + this.getTopic());
-      noteId = +params.get('id1');
-      this.subscribeToNote(this.getTopic(), noteId);
-      console.log('note id is now: ' + noteId);
-    });
-  }
-
-  subscribeToNote(topicId: number, noteId : number) : void{
-    //console.log('subscribeToTopic id is now: ' +this.id);
-    // ! The JavaScript + operator converts the string to a number, which is what a hero id should be
-    this.noteService.getNote(topicId, noteId).subscribe(note => {
-      this.onNewNote(note);
-      //console.log('topic is now: ' + topic.id);
-    });
-  }
-
-  onNewNote(note){
-    this.note = note;
-    //this.notesList = topic.notesList;
-    console.log(this.note);
-  }
-*/
+  
 /////////////////////////////////////////////////////////////
 
   // gets the current id in the url in order to subscibeToTopic
@@ -227,58 +155,40 @@ getCurrentRouteEnd(){
     this.noteService.getCurrentNote().subscribe(note => this.note = note);
   }
 
-  /*
-  getTopicId(): void {
-    this.route.paramMap.subscribe(params => {
-      this.topicId = params.get('topicId');
-      console.log('note viewer topic id: ' + this.topicId );
-      this.subscribeToTopic();
-  });
+  checkIfInputsEmpty(){
+    this.isNoteTitleEmpty();
+    this.isNoteTextEmpty();
   }
-  */
-  /*
-  subscribeToTopic(): void {
-    this.noteService.getCurrentTopic().subscribe(topic => {
-      this.topic = topic;
-      console.log('viewer topic name is now: ' + this.topic.id);
-      this.getNoteId();
-    });
-  }
-  */
 
-  /*
-  getNoteId(): void{
-    this.route.paramMap.subscribe(params => {
-      this.noteId = +params.get('noteId');
-      
-      console.log('note viewer note id: ' + this.noteId );
-      this.onNewTopic(this.noteId);
-    });
-  }
-  */
-
-/*
- getNoteId(): number{
-  this.route.paramMap.subscribe(params => {
-    this.noteId = +params.get('noteId');
-  });
-*/
   isNoteTextEmpty() : void{
     if (this.note.text == '') {
       this.noteTextEmpty = true;
-      console.log("eeeempty");
     } else {
       this.noteTextEmpty = false;
     }
   }
-  /*
-  onNewTopic(noteId: number) {
-    this.note = this.topic.notesList[noteId - 11];
-    this.note.id = this.topic.notesList[noteId - 11].id;
-    this.note.title = this.topic.notesList[noteId - 11].title;
-    this.note.text = this.topic.notesList[noteId - 11].text;
-    // console.log(this.note.id);
+
+  isNoteTitleEmpty() : void{
+    if (this.note.title == '') {
+      this.noteTitleEmpty = true;
+    } else {
+      this.noteTitleEmpty = false;
+    }
   }
-  */
-  
+
+  addNoteToDBOnFirstInput(){
+    let returnedNoteId;
+    if(this.newNoteState){
+      this.noteService.addNote({title : this.note.title, topicId : this.topicId})
+        .then( (id) => {
+          returnedNoteId = id;
+          this.newNoteState = false;
+          console.log("creating note, now routing");
+          //this.router.navigate(['notes-manager/2/notes/', returnedNoteId]);
+        }
+      );
+      
+    }
+    
+  }
 }
