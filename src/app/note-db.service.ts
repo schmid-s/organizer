@@ -43,6 +43,9 @@ export class NoteDbService extends Dexie {
 
       db.topics.mapToClass(Topic);
       db.notes.mapToClass(Note);
+
+
+      
     }
 
 

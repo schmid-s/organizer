@@ -116,7 +116,11 @@ export class NotesListComponent implements OnInit, OnChanges {
   
 
   subscribeToNotes(){
-    this.noteService.getAllNotes(this.topic.id).subscribe( (notes) => this.notes = notes);
+    this.noteService.getAllNotes(this.topic.id).subscribe( (notes) => {
+      this.notes = notes;
+      console.log('notes updated in notes-list component');
+    }
+    );
   }
 
   /*
