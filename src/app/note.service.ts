@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, of, from} from 'rxjs';
+import { Observable, Subject, of, from} from 'rxjs';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Topic } from './topic';
 import {Note} from './note';
@@ -21,6 +21,9 @@ export class NoteService {
   private $noteId: Observable<number>;
   private $topicId: Observable<number>;
   private params;
+  private updatedNotes : Subject<Note[]> = new Subject<Note[]>();
+  public notes : Observable<Note[]>;
+  private currentTopicId : number;
 
   // private noteListUrl = 'api/noteList${topic.id}'
 
@@ -33,9 +36,42 @@ export class NoteService {
     this.notesTable = this.noteDBService.table('notes');
     this.topicsTable = this.noteDBService.table('topics');
 
-    this.noteDBService.on('changes', function (changes) {
-      changes.forEach(function (change : any) {
+    
+  }
+
+  //mitUpdatedNotes() : Observable<Note[]> {
+  //  this.currentNotes.next(from(this.notesTable.where("topicId").equals(topicId).toArray()));
+  //}
+
+  getInitialNotes(topicId: number) : Promise<Note[]>{
+    return this.notesTable.where("topicId").equals(topicId).toArray();
+  }
+
+  getAllNotes(topicId: number) : Subject<Note[]>{
+
+    //TO DO: Hier statt observables lieber promises hernehmen, weil nur immer ein Wert zurückgegeben wird!?
+
+    //erstmal auf bisherige daten subscriben:
+    let subscription = from(this.notesTable.where("topicId").equals(topicId).toArray()).subscribe(data => {
+      this.updatedNotes.next(data);
+      console.log('changes triggered');
+    })
+    //falls changes passieren erste subscription beenden und neu subscriben:
+    this.noteDBService.on('changes', (changes) => {
+      //changes.forEach((change : any) => {
+        console.log('changes triggered');
+        subscription.unsubscribe();
+        subscription = from(this.notesTable.where("topicId").equals(topicId).toArray()).subscribe(data => {
+          this.updatedNotes.next(data);
+          console.log('changes triggered');
+        })
+        
+        
+        //this.updatedNotes.next(this.notesTable.where("topicId").equals(topicId).toArray());
+        /*
         switch (change.type) {
+          
+          
           case 1: // CREATED
             console.log('An object was created: ' + JSON.stringify(change.obj));
 
@@ -46,19 +82,21 @@ export class NoteService {
           case 3: // DELETED
             console.log('An object was deleted: ' + JSON.stringify(change.oldObj));
             break;
+          
         }
-      });
+        */
+      //});
     });
-  }
 
-  getAllNotes(topicId: number) : Observable<Note[]>{
-    console.log('noteservice performing getAllNotes on topicId: '+topicId);
-    return from(this.notesTable.where("topicId").equals(topicId).toArray());
-  }
 
-  getAllNotes(topicId: number) : Observable<Note[]>{
     console.log('noteservice performing getAllNotes on topicId: '+topicId);
-    return from(this.notesTable.where("topicId").equals(topicId).toArray());
+    
+    //this.updatedNotes.next(from(this.getInitialNotes(topicId)));
+    //this.updatedNotes.subscribe((updatedNotes) => notes = of(updatedNotes));
+    //erst frage ich einfach den stand meines Observables ab
+    //falls es veränderungen gibt
+    //this.currentNotes.next(from(this.notesTable.where("topicId").equals(topicId).toArray()));
+    return this.updatedNotes;
   }
 
   getNote(noteId: number) : Observable<Note>{
