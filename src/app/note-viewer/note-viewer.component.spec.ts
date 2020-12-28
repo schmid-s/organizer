@@ -1,8 +1,8 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { async, ComponentFixture, TestBed, } from '@angular/core/testing';
 import { NoteViewerComponent } from './note-viewer.component';
+import { NotesNavComponent } from '../notes-nav/notes-nav.component';
 
-describe('NoteViewerComponent', () => {
+fdescribe('NoteViewerComponent', () => {
   let component: NoteViewerComponent;
   let fixture: ComponentFixture<NoteViewerComponent>;
 
@@ -21,5 +21,11 @@ describe('NoteViewerComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it("should recognize if a notes's text-area is empty", () => {
+    this.note.text = '';
+    this.isNoteTextEmpty();
+    expect(this.noteTitleEmpty).toBeTruthy;
   });
 });

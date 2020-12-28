@@ -1,7 +1,6 @@
 @import "../../style-variables.scss";
 
 :host{
-    font-size: 1.25rem;
     padding: 0 1.4rem;
     //margin: $site-component-margin;
     z-index: 0;
@@ -12,7 +11,7 @@
     */
     z-index:2;
     background-color: $notes-nav-bg-color;
-    box-shadow: 0px 0px 10px 8px $shadow-color;
+    box-shadow: $container-shadow-drop;
 }
 
 ul{
@@ -30,7 +29,7 @@ li{
     color: $font-color-high-contrast-primary;
     background-color: $background-color4;
     background: $background-color3;
-    padding: 0.8rem 1rem 1.1rem 1rem;
+    padding: 0.8rem 1rem 1.2rem 1rem;
     margin-bottom: 0;
     border-radius: .6rem .6rem 0 0;
     //box-shadow:inset 0px 6px 6px 2px $background-color4;
@@ -51,11 +50,9 @@ input{
     outline: none;
 }
 
-
-
 a, button, input{
     padding: 0.8rem 1rem;
-    margin: .3rem 0;
+    margin: .4rem 0;
     border: none;
     border-radius: .6rem;
     color: $font-color-high-contrast-primary;

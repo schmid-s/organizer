@@ -3,13 +3,56 @@
 :host{
     position: relative;
     padding: $text-field-padding 0;
-    z-index: -1;
+    margin-right: $standard-element-spacing;
     flex: 1;
     flex-direction: column;
     display: flex;
-    border-radius: $site-component-rounded-corners;
-    background-color: $text-field-bg-color;
+    //background-color: white;
+    //border-left: 2px solid $header-bg-color;
+    //@at-rootbackground: linear-gradient(to bottom, rgba(253,248,239,1) 50%, rgba(255,98,35,0.27) 75%, rgba(255,98,35,0.45) 86%, rgba(255,98,35,1) 100%);
+    
+    box-shadow: $container-shadow-drop;
+    
+    background: transparent;
+    //box-shadow: inset 0 0 0 0.2rem $background-color4;
+    /*
+    background: linear-gradient(270deg,rgba(34, 34, 34, 0) 0, rgba(34, 34, 34, 1) 95%, rgba(34, 34, 34, 1) 100%),
+                linear-gradient(0deg,rgba(34, 34, 34, 0) 0, rgba(34, 34, 34, 1) 95%, rgba(34, 34, 34, 1) 100%),
+                linear-gradient(90deg, rgba(63,94,251, 0) 0%, rgb(63,94,251, 1) 100%),
+                linear-gradient(180deg, rgba(255, 136, 0, 0) 0%, rgba(255, 136, 0, 1) 100%);
+    */
+    //backdrop-filter: blur(10px);
+    //background: $background-color3;
+    background-clip: padding-box; /* !importanté */
+    //border: solid $standard-element-spacing transparent; /* !importanté */
+    //border-radius: 1em;
+    border-radius: .6rem;
+    
+    &::after{
+        content: "";
+        z-index: -1;
+        position: absolute;
+        //margin: -$standard-element-spacing; /* !importanté */
+        border-radius: inherit; /* !importanté */
+        top: 0; 
+        right: 0;
+        left: 0;
+        bottom: 0;
+        
+        //background-color: $background-color4;
+        /*
+        background: //linear-gradient(270deg,rgba(34, 34, 34, 0) 0,  rgba(34, 34, 34, 1) 100%),
+                    //linear-gradient(0deg,rgba(34, 34, 34, 0) 0, rgba(34, 34, 34, 1) 100%),
+                    //linear-gradient(315deg,rgba(34, 34, 34, 0) 0, rgba(34, 34, 34, 1) 100%),
+                    //linear-gradient(270deg,rgba(49, 49, 49, 0) 0,  rgba(49, 49, 49, 1) 100%),
+                    //linear-gradient(67.5deg, rgba(63,94,251, 0) 0%, rgb(63,94,251, 1) 100%),
+                    linear-gradient(135deg, rgba(63,94,251, 0) 0%, rgb(63,94,251, 1) 100%),
+                    //linear-gradient(90deg, rgba(63,94,251, 0) 0%, rgb(63,94,251, 1) 100%),
+                    //linear-gradient(135deg, rgba(0, 255, 119, 0) 0%, rgb(0, 255, 119, 1) 100%);
+        *///
+    }
 }
+
 /*
 :host > *{
     padding: 0 $text-field-padding;
@@ -18,9 +61,8 @@
 .closeComponentLink{
     position: absolute;
     right: $text-field-padding;
-    top: 2.8rem;
-    right: 0;
-    top: 0;
+    top: $standard-element-spacing-half;
+    right: $standard-element-spacing-half;
     display: block;
     color: $background-color1;
     display: inline-block;
@@ -106,7 +148,7 @@ textarea:hover, input:hover{
     color: rgb(134, 134, 134);
 }
 */
-@at-root
+//@at-root
 textarea:visited{
     .notes-label{
         display:none;

@@ -4,6 +4,10 @@
     flex-direction: column;
     overflow: hidden;
 }
+
+main{
+    display: flex;
+}
 /*
 :host ::ng-deep :first-child{
 

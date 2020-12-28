@@ -8,12 +8,24 @@
     align-items: stretch;
     flex: 1 1 auto;
     z-index: 0;
-    padding: 1.4rem;
+    padding-top: $standard-element-spacing;
+    padding-bottom: $standard-element-spacing;
     //background: #1b1b1b;
     //background: linear-gradient(to bottom, #1b1b1b 0%,#212121 2rem);
     min-height: 0;
     //background: -webkit-radial-gradient(center, ellipse cover, $background-color4 0%,$text-field-bg-color 66%); /* Chrome10-25,Safari5.1-6 */
-    //background: radial-gradient(ellipse at bottom right, rgb(8, 8, 8) 5%,$text-field-bg-color 66%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    //background: radial-gradient(ellipse at bottom right, rgb(8, 8, 8) 5%,$text-field-bg-color 66%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */    
+}
+
+/* benutzen, wenn kein router-outlet in notes-level
+:host > * {
+    margin-right: $standard-element-spacing;
+}
+*/
+
+:host > *:first-child{
+    margin-left: $standard-element-spacing;
+    margin-right: $standard-element-spacing;
 }
 
 @media only screen and (max-width: 599px) {

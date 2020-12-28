@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild, QueryList, ViewChildren } from '@angular/core';
 import { Note } from '../note';
-import {ActivatedRoute, Router, ParamMap} from '@angular/router';
+import {ActivatedRoute, Router, ParamMap, NavigationEnd} from '@angular/router';
 
 import { Location} from '@angular/common';
 import { NoteService} from '../note.service';
@@ -21,7 +21,7 @@ export class NoteViewerComponent implements OnInit {
   note?: Note;
 
   //@ViewChild("noteTitle", {static: false}) titleInput: ElementRef;
-  @ViewChildren("noteTitle") titleInput: QueryList<ElementRef>;
+  @ViewChild("noteTitle", {static : false}) titleInput : any; //should any be exchanged for sth more specific? htmlelement does not work
 
   noteTextEmpty: boolean = false;
   noteTitleEmpty: boolean = false;
@@ -35,34 +35,25 @@ export class NoteViewerComponent implements OnInit {
     private noteService: NoteService,
     private location: Location
   ) {
-    /*
-    const parentActivatedRoute = router.routerState.parent(route);
-    this.parentId = parentActivatedRoute.params.map(routeParams => routeParams.id);
-    */
+    
   }
 
   ngOnInit() {
+    console.log('this.note is '+this.note);
     //this.actOnRouteParams();
     this.getNotesOnNewTopic();
-
+    
   }
 
   ngAfterViewInit(){
-    if(this.newNoteState) this.setFocusToTitleInput();
+    //if(this.newNoteState) this.setFocusToTitle();
     //this.isNoteTitleEmpty();
     //this.isNoteTextEmpty();
+    //this.setFocusToTitle();
   }
 
 /////////////////////////////////////////////////////
 
-setFocusToTitleInput(){
-  console.log('setting focus');
-  if (this.titleInput.length > 0) {
-    console.log("this.titleInput.first.nativeElement is "+this.titleInput.first.nativeElement);
-    this.titleInput.first.nativeElement.focus();
-    //sdfgsdgthis.titleInput.first.nativeElement.style.backgroundColor = 'blue';
-  }
-}
 
 caseParamsHasNoNew(params){
   this.noteId = +params.get('noteId');
@@ -111,13 +102,15 @@ getNotesOnNewTopic(){
    //console.log('url by router 2= '+this.router.url.includes('new'));
 
     if(output instanceof Note){
-      if(this.noteId) this.note = output;
+      if(this.noteId) {
+        this.note = output;
+        //this.setFocusToTitle();
+      
       //console.log('this.note = '+this.note);
-    } 
+      } 
+    }
     else if(this.instanceOfParamMap(output)){
       this.createNewNote();
-      this.checkIfInputsEmpty();
-      //this.setFocusToTitleInput();
     }
     else{
       throwError;
@@ -143,6 +136,9 @@ getNotesOnNewTopic(){
     console.log('create new note');
     this.note = new Note('');
     this.newNoteState = true;
+    console.log('this.note.title is : '+this.note.title);
+    this.checkIfInputsEmpty();
+    this.setFocusToTitle();
   }
 
   
@@ -171,6 +167,7 @@ getNotesOnNewTopic(){
   isNoteTitleEmpty() : void{
     if (this.note.title == '') {
       this.noteTitleEmpty = true;
+      this.setFocusToTitle();
     } else {
       this.noteTitleEmpty = false;
     }
@@ -184,11 +181,21 @@ getNotesOnNewTopic(){
           returnedNoteId = id;
           this.newNoteState = false;
           console.log("creating note, now routing");
-          //this.router.navigate(['notes-manager/2/notes/', returnedNoteId]);
+          this.router.navigate(['notes-manager', this.topicId, 'notes', returnedNoteId]);
         }
       );
       
     }
-    
+    else{
+      console.log("üüüüüüüüüüüüüüüüüüüüüüüüüüüü");
+      this.noteService.updateNote(this.noteId, {title : this.note.title})
+    }
   }
+
+  setFocusToTitle(){
+    console.log("setFocusToTitle triggered");
+    (document.activeElement as HTMLElement).blur();
+    this.titleInput.nativeElement.focus();
+  }
+    
 }

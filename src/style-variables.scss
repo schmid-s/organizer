@@ -2,16 +2,16 @@
 
 $base-color: white;
 $background-color1: #3c3c3c;
-$background-color1: #4d4d4d;
+$background-color1: rgb(77, 77, 77);
 $background-color2: #262626;
 $background-color2: #292929;
 $background-color2: #2e2e2e;
-$background-color2: #313131;
+$background-color2: rgb(49, 49, 49);
 $background-color3: #212121;
-$background-color3: #222222;
+$background-color3: rgb(34, 34, 34);
 $background-color4: #1b1b1b;
 $background-color4: #171717;
-$background-color4: #191919;
+$background-color4: rgb(25, 25, 25);
 $shadow-color: #191919;
 $high-contrast-color: rgb(60,60,60);
 $high-contrast-color: #474747;
@@ -28,7 +28,12 @@ $font-color-high-contrast-secondary:$background-color4;
 $font-color-medium-contrast: rgb(165, 165, 165);
 $font-color-max-dark: #080808;
 
+    //button color
 
+$button-outline-col: #3f3f3f;
+$button-outline-col: #444444;
+
+    // various
 $header-bg-color: $background-color2;
 $notes-nav-bg-color: $background-color2;
 $text-field-bg-color: transparent; 
@@ -39,10 +44,15 @@ $text-field-font-color: $font-color-high-contrast-primary;
 $thin-space: .1rem;
 $medium-space: .3rem;
 
+$standard-element-spacing: 1.4rem;
+$standard-element-spacing-half: calc(#{$standard-element-spacing} * 0.5);
 
 $site-component-margin: $medium-space;
 
 $site-component-rounded-corners: .6rem;
+
+$text-elem-padding: .8rem;
+
 $text-field-padding: 3.9rem;
 
 $list-1-button-height:6rem;
@@ -53,12 +63,9 @@ $skeumorphic-button-height: .5rem;
 
 /* timing */
 
-$transition-duration1: .2s;
+$transition-duration1: .13s;
 
-main{
-    //margin: $site-component-margin;
-    //margin: 0 -$site-component-margin -$site-component-margin -$site-component-margin;
-    //margin: calc(§* -$site-component-margin);
-    
-    
-}
+ /* shadows */
+
+$container-shadow-around: 0px 0px 10px 6px $shadow-color;
+$container-shadow-drop: 0px 6px 10px 0px $shadow-color;

@@ -3,19 +3,39 @@
 :host{
     z-index:10;
     //border-bottom: 2px solid $background-color4;
+
 }
 
 header{
     height: auto;
+    width: 100%;
     z-index: 1;
-    padding: .8rem 2rem .8rem 2rem;
-    padding: 1rem 2rem 1rem 2rem;
-    padding: 1.4rem 2rem .8rem 2rem;
+    padding: .6rem 2rem .2rem 2rem;
+    border-bottom: .2rem solid $background-color4;
     background-color: $header-bg-color;
+    //background: linear-gradient(0deg, $background-color4 0%, $header-bg-color 100%);
+    display: flex;
+    align-items: center;
 }
 
 h1{
-    font-weight: 300;
-    font-size: 1.8rem;
-    color: $base-color;
+    font-weight: 600;
+    font-size: 1.6rem;
+    letter-spacing: .02rem;
+    //color: $base-color;
+    display: inline-block;
+}
+
+a{
+    //padding: 0.8rem 1rem;
+    //margin: .4rem 0;
+    //border: none;
+    margin-top: .4rem;
+    margin-bottom: .4rem;
+    border-radius: .6rem;
+    //color: $font-color-high-contrast-primary;
+}
+
+.right-aligned{
+    margin-left: auto;
 }

@@ -18,6 +18,9 @@ import { RouterModule } from '@angular/router';
 import { NotesLevelComponent } from './notes-level/notes-level.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LogInComponent } from './log-in/log-in.component';
+
+import { FakeBackendInterceptor } from '../helpers/fake-backend';
 
 @NgModule({
   declarations: [
@@ -28,14 +31,16 @@ import { environment } from '../environments/environment';
     NoteManagerComponent,
     HeaderComponent,
     NoteViewerComponent,
+    LogInComponent,
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     FlexLayoutModule,
     FormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule,
-    RouterModule,
+    
     
     // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
     // and returns simulated server responses.
@@ -48,7 +53,9 @@ import { environment } from '../environments/environment';
 
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [
+    FakeBackendInterceptor
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,53 @@
+@import "../../style-variables.scss";
+
+:host{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: $background-color2;
+    padding: 1.2rem 2.4rem;
+    width: 70ch;
+    box-shadow: $container-shadow-drop;
+}
+
+fieldset{
+    width: auto;
+}
+
+label{
+    display: inline-block;
+    text-align: center;
+    padding-top: .6rem;
+}
+
+form > *{
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+button, input{
+    padding: 0.8rem 1rem;
+    //margin: .4rem 0;
+    border: none;
+    border-radius: .6rem;
+    //color: $font-color-high-contrast-primary;
+}
+
+input{
+    background-color: $background-color3;
+    outline: none;
+    width: 66%;
+    margin-left: .4rem;
+    float: right;
+}
+
+.log-in-btn{
+    align-self: stretch;
+    text-align: center;
+}

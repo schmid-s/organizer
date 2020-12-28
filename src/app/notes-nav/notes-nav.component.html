@@ -1,6 +1,6 @@
 <nav fxLayout.xs="column">
   <ul class ="notes-nav" fxLayout.xs="column" flexLayoutAlign="start">
-    <li *ngFor="let topic of topicsArray">
+    <li class="topics-list" *ngFor="let topic of topicsArray">
         <a routerLink="/notes-manager/{{topic.id}}" routerLinkActive="active">{{topic.title}}</a>
     </li>
   </ul>

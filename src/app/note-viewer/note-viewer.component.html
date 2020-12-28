@@ -2,7 +2,7 @@
   <div></div>
 </a>
 <form *ngIf="note" fxLayout="column">
-  <label class="title-label" *ngIf="this.noteTitleEmpty">Add your title here</label>
+  <label class="title-label" *ngIf="this.noteTitleEmpty" autofocus>Add your title here</label>
   <input #noteTitle class="note-title" [(ngModel)]="note.title" name="noteTitle" (ngModelChange)="this.isNoteTitleEmpty(); addNoteToDBOnFirstInput()" autocomplete="off">
   <label class="empty-label" *ngIf="this.noteTextEmpty">Add your notes here</label>
   <textarea [(ngModel)]="note.text" name="noteText" spellcheck="false" (ngModelChange)="this.isNoteTextEmpty()"></textarea>
