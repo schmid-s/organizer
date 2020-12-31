@@ -31,12 +31,10 @@ export class NoteService {
     private http: HttpClient, 
     private noteDBService: NoteDbService, 
     private route: ActivatedRoute,
-    private router: Router) 
+    private router: Router)
     {
     this.notesTable = this.noteDBService.table('notes');
     this.topicsTable = this.noteDBService.table('topics');
-
-    
   }
 
   //mitUpdatedNotes() : Observable<Note[]> {
@@ -113,8 +111,9 @@ export class NoteService {
   }
 
   addTopic(data) {
+    console.log('addTopic triggered');
     const newTopic: Topic  = new Topic(data);
-    return this.topicsTable.add( newTopic);
+    return this.topicsTable.add(newTopic);
   }
 
   updateNote(id, data) {
@@ -147,6 +146,8 @@ export class NoteService {
     //let topic: Observable<Topic>;
     //this.$topicId.subscribe(id => {topic = from(this.topicsTable.get(id))});
     //return topic;
+    console.log('getCurrentTopic triggered');
+
     return this.$topicId.pipe(
       switchMap( id => {
         console.log('switchmap output id is'+(id));

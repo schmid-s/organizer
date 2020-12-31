@@ -12,9 +12,11 @@ export class NoteDbService extends Dexie {
     notes: Dexie.Table<Note, number>;
 
     constructor() {  
-      super("NotesDB");
+      super("NotesDBService");
       
-      var db = this;
+      let db = this;
+
+      console.log('note-db-service constructor running');
 
       //
       // Define tables and indexes
@@ -35,18 +37,11 @@ export class NoteDbService extends Dexie {
       // db.topics.add({id: 3, title: "topic 3"});
       // db.topics.add({id: 4, title: "topic 4"});
 
-
       // The following lines are needed for it to work across typescipt using babel-preset-typescript:
       this.topics = this.table("topics");
       this.notes = this.table("notes");
 
-
       db.topics.mapToClass(Topic);
       db.notes.mapToClass(Note);
-
-
-      
     }
-
-
 }

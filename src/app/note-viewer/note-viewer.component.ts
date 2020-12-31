@@ -195,7 +195,7 @@ getNotesOnNewTopic(){
   setFocusToTitle(){
     console.log("setFocusToTitle triggered");
     (document.activeElement as HTMLElement).blur();
-    this.titleInput.nativeElement.focus();
+    //this.titleInput.nativeElement.focus();
   }
     
 }
