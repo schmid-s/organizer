@@ -26,13 +26,13 @@ export class NotesListComponent implements OnInit, OnChanges {
 
   viewAsGrid: boolean = false;
   //gridViewBtnText: string = "Grid View";
-  gridViewBtnText: string = "▦";
-  listViewBtnText: string = "▤";
+  gridViewBtnText: string = "☷";
+  listViewBtnText: string = "☰";
   currentViewModeBtnText = this.gridViewBtnText;
 
   @HostBinding('class.hidden-state-host') componentHidden: boolean = false;
   visibleStateBtnText: string = "Hide";
-  hiddenStateBtnText: string = '☰';
+  hiddenStateBtnText: string = this.currentViewModeBtnText;
   currentHideStateBtnText = this.visibleStateBtnText;
 
   constructor(
@@ -63,8 +63,10 @@ export class NotesListComponent implements OnInit, OnChanges {
     this.viewAsGrid = !this.viewAsGrid;
     if(this.viewAsGrid){
       this.currentViewModeBtnText = this.listViewBtnText;
+      this.hiddenStateBtnText = this.gridViewBtnText;
     } else{
       this.currentViewModeBtnText = this.gridViewBtnText;
+      this.hiddenStateBtnText = this.listViewBtnText;
     }
   }
 

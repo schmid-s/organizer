@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, Subject, of, from} from 'rxjs';
+import { Observable, Subject, of, from } from 'rxjs';
 import { map, switchMap, filter } from 'rxjs/operators';
 import { Topic } from './topic';
-import {Note} from './note';
+import { Note } from './note';
 import { ActivatedRoute, Router, ActivationEnd } from '@angular/router';
 import { NoteDbService } from './note-db.service';
 import Dexie from 'dexie';
