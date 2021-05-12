@@ -29,6 +29,7 @@ export class NotesListComponent implements OnInit, OnChanges {
   gridViewBtnText: string = "☷";
   listViewBtnText: string = "☰";
   currentViewModeBtnText = this.gridViewBtnText;
+  deleteTopicDialog: boolean = false;
 
   @HostBinding('class.hidden-state-host') componentHidden: boolean = false;
   visibleStateBtnText: string = "Hide";
@@ -79,27 +80,10 @@ export class NotesListComponent implements OnInit, OnChanges {
     }
   }
 
+  deleteTopic() {
+    this.noteService.removeTopic(this.topicId);
+  }
 
-  /*
-  getTopic(){
-    this.noteService.getCurrentTopic().subscribe( (topic) => this.topic = topic);
-  }
-  */
- /*
-  subscribeToCurrentTopicId(): void {
-    console.log('subscribeToCurrentTopicId() doing');
-    this.route.paramMap.subscribe(params => {
-      this.topicId = +params.get('topicId');
-      //this.subscribeToTopic(this.getTopic(), this.topicId);
-      console.log('this topic id is '+(params.get('topicId'))),
-      console.log('params has notes-manager '+(params.has('notes-manager'))),
-      console.log('parameter names in the map: '+(params.keys)),
-      error => {
-        console.log('possibly no noteId available');
-      }
-    });
-  }
-  */
   getNotesOnNewTopic(){
     this.route.paramMap.pipe(
       tap(() => console.log("tapping")),
