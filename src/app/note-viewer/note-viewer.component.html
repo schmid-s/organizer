@@ -1,9 +1,19 @@
-<a *ngIf="topicId" class="closeComponentLink" routerLink="/notes-manager/{{topicId}}">
+<form *ngIf="note" fxLayout="column">
+  <label class="title-label" *ngIf="this.noteTitleEmpty">Add your title here</label>
+  <input #titleInput class="note-title" [(ngModel)]="note.title" name="noteTitle" (ngModelChange)="this.isNoteTitleEmpty(); addNoteToDBOnFirstInput()" autocomplete="off">
+  <label class="text-label" *ngIf="this.noteTextEmpty">Add your notes here</label>
+  <textarea #textInput [(ngModel)]="note.text" name="noteText" spellcheck="false" (ngModelChange)="this.isNoteTextEmpty(); updateNoteByTextField()"></textarea>
+</form>
+<!--absolute Elements-->
+<a *ngIf="topicId" class="closeComponentLink functionalBtn symbolBtn" routerLink="/notes-manager/{{topicId}}">
   <div></div>
 </a>
-<form *ngIf="note" fxLayout="column">
-  <label class="title-label" *ngIf="this.noteTitleEmpty" autofocus>Add your title here</label>
-  <input #noteTitle class="note-title" [(ngModel)]="note.title" name="noteTitle" (ngModelChange)="this.isNoteTitleEmpty(); addNoteToDBOnFirstInput()" autocomplete="off">
-  <label class="empty-label" *ngIf="this.noteTextEmpty">Add your notes here</label>
-  <textarea [(ngModel)]="note.text" name="noteText" spellcheck="false" (ngModelChange)="this.isNoteTextEmpty()"></textarea>
-</form>
+<a class="deleteNoteLink functionalBtn" (click)="deleteDialog = true">delete</a>
+<div *ngIf="deleteDialog" class="dialog-overlay">
+    <p class="">Do you really want to delete this note?</p>
+    <div class="dialog-answers">
+      <a class="pushable-with-border" (click)="this.deleteNote(); deleteDialog = false" routerLink="/notes-manager/{{topicId}}">Yes</a>
+      <a class="pushable-with-border" (click)="deleteDialog = false">No</a>
+    </div>
+
+</div>
