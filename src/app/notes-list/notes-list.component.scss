@@ -40,6 +40,7 @@
 }
 
 :host{
+    max-width: 20%;
     //border-top: $thin-space solid $canvas-color;
     //background-color: $high-contrast-color;
     position: relative;
@@ -116,10 +117,13 @@ ul{
 li{ 
     text-align: left;
     direction: ltr;
+    max-width: 100%;
 }
 
 a, button {
     width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
     display: block;
     border: none;
     padding: 1.4rem 3.2rem;

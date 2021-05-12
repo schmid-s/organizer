@@ -9,6 +9,7 @@ html{
     font-weight: 300;
     list-style: none;
     background-color: $background-color3;
+    //background-color: rgb(24, 24, 24);
     color: $font-color-high-contrast-primary;
     
     
@@ -95,6 +96,27 @@ fieldset{
     border :none;
 }
 
+.dialog-overlay{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    background-color: $overlay-color;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+    border-radius: $site-component-rounded-corners;
+}
+
+.dialog-answers{
+    
+    display: flex;
+    align-items: space-around;
+}
 
 .pushable-with-border{
     padding: 0.8rem 1rem;

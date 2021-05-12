@@ -26,6 +26,11 @@
 :host > *:first-child{
     margin-left: $standard-element-spacing;
     margin-right: $standard-element-spacing;
+    z-index: 3;
+}
+
+.notes-list{
+    max-width: 20%;
 }
 
 @media only screen and (max-width: 599px) {
