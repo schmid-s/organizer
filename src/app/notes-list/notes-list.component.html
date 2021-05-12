@@ -8,10 +8,19 @@
     </li>
   </ul>
   <div class="notesListOptions">
-    <button class="symbol" (click)="changeListLayout()" *ngIf="!this.componentHidden">{{this.currentViewModeBtnText}}</button>
+    <button *ngIf="!this.componentHidden" (click)="deleteTopicDialog = true" >Delete Topic</button>
+    <button *ngIf="!this.componentHidden" class="symbol" (click)="changeListLayout()">{{this.currentViewModeBtnText}}</button>
     <button (click)="changeHideState()">{{this.currentHideStateBtnText}}</button>
   </div>
 </div>
 
+<!--absolutely positioned Elements-->
+<div *ngIf="deleteTopicDialog" class="dialog-overlay">
+    <div class="">
+      <p>Do you really want to delete this topic with all its notes?</p>
+      <a (click)="this.deleteTopic(); deleteTopicDialog = false" routerLink="/notes-manager">Yes</a>
+      <a (click)="deleteTopicDialog = false">No</a>
+    </div>
+  </div>
 
   
