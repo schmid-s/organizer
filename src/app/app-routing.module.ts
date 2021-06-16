@@ -7,6 +7,7 @@ import { NotesLevelComponent } from './notes-level/notes-level.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { NoteViewerComponent } from './note-viewer/note-viewer.component';
 import { LogInComponent } from './log-in/log-in.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'log-in', component: LogInComponent}
+  { path: 'log-in', component: LogInComponent},
+  { path: 'sign-up', component: SignUpComponent}
   // { path: 'notes/:id', component: NotesListComponent}
 ];
 
