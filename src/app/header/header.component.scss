@@ -39,3 +39,7 @@ a{
 .right-aligned{
     margin-left: auto;
 }
+
+.right-aligned a{
+    margin-left: $btn-spacing;
+}

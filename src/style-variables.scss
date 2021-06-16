@@ -42,10 +42,15 @@ $notes-nav-bg-color: $background-color2;
 $text-field-bg-color: transparent; 
 $text-field-font-color: $font-color-high-contrast-primary;
 
+/* typo */
+$font-prominent: 'JetBrains Mono', monospace;
+
 /* spaces */
 
 $thin-space: .1rem;
 $medium-space: .3rem;
+
+$btn-spacing: .6rem;
 
 $standard-element-spacing: 1.4rem;
 $standard-element-spacing-half: calc(#{$standard-element-spacing} * 0.5);
